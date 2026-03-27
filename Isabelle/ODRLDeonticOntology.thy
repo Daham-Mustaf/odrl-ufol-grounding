@@ -1,7 +1,7 @@
 (* ============================================================
    ODRLDeonticOntology.thy  --  Stage 1
    FOIS 2026 -- "What Does ODRL Mean?"
-   run isabelle build -D /Users/dahammhamad/Desktop/tptp-odrl/Isabelle/ -v
+   run: isabelle build -D Isabelle/ -v
    ============================================================ *)
 (* ============================================================
    ODRLDeonticOntology.thy
