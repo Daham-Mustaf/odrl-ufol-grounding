@@ -3,7 +3,7 @@
 ; Domain   : Deontic Ontology / ODRL Grounding
 ; Problem  : Strong perm creates Disability in assigner (positive conjecture)
 ; Status   : unsat
-; Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Policy   : Policies/GRND034-disability-exists-policy.ttl
 ; Generated: 2026-03-27 by gen_foundation_problems.py v1.5
 ;
@@ -35,7 +35,7 @@
 ;              from gen_layer0_signature import generate_smt2 as _gen_smt2
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
-; Source   : Mohammed et al., What Does ODRL Mean? FOIS 2026
+; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Generated: 2026-03-27 by gen_layer0_signature.py
 ;
 ; Key design decisions:
@@ -52,7 +52,7 @@
 ;   - Issue 3: founds-rem and founds-imm in SMT2_RELATOR_PREDICATES.
 ; --------------------------------------------------------------------------
 (set-logic UF)
-(set-info :source |Mohammed et al., What Does ODRL Mean? FOIS 2026|)
+(set-info :source |[Anonymous] et al., What Does ODRL Mean? FOIS 2026|)
 (set-info :status unknown)
 
 ; --------------------------------------------------------------------------

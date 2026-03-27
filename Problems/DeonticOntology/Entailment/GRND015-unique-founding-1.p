@@ -3,7 +3,7 @@
 % Domain   : Deontic Ontology / ODRL Grounding
 % Problem  : Unique founding: same event+rule founds at most one relator
 % Status   : Theorem
-% Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND015-unique-founding-policy.ttl
 % Generated: 2026-03-27 by gen_foundation_problems.py v1.5
 %

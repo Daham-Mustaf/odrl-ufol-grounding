@@ -2,7 +2,7 @@
 # File     : GRND035-dual-rule-remedy-chain-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Dual-rule: Power in remedy relator concerns founding event (B2)
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-27 by gen_foundation_problems.py
 # Links    : Entailment/GRND035-dual-rule-remedy-chain-1.p
 #            Entailment/GRND035-dual-rule-remedy-chain-1.smt2

@@ -3,7 +3,7 @@
 % Domain   : Deontic Ontology / ODRL Grounding
 % Problem  : Strong permission creates Immunity and Disability
 % Status   : Theorem
-% Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND010-strong-perm-policy.ttl
 % Generated: 2026-03-27 by gen_foundation_problems.py v1.5
 %

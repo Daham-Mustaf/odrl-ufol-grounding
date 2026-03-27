@@ -6,7 +6,7 @@
 % English  : FOF signature. Include in ALL DeonticOntology .p files via:
 %              include('Axioms/Layer0-Signature/GRND000-0.ax').
 %
-% Source   : Mohammed et al., What Does ODRL Mean? FOIS 2026
+% Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Generated: 2026-03-27 by gen_layer0_signature.py
 %
 % Sorts (unary guard predicates — FOF has no native sorts):

@@ -2,7 +2,7 @@
 # File     : GRND001-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Full axiom set consistency
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-27 by gen_foundation_problems.py
 # Links    : Consistency/GRND001-1.p
 #            Consistency/GRND001-1.smt2

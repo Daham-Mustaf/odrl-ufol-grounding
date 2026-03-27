@@ -2,7 +2,7 @@
 # File     : GRND016-conflict-relator-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Conflict detection: Permission and Duty in same relator
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-27 by gen_foundation_problems.py
 # Links    : Entailment/GRND016-conflict-relator-1.p
 #            Entailment/GRND016-conflict-relator-1.smt2

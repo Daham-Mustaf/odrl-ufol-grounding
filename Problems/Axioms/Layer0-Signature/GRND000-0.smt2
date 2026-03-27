@@ -9,7 +9,7 @@
 ;              from gen_layer0_signature import generate_smt2 as _gen_smt2
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
-; Source   : Mohammed et al., What Does ODRL Mean? FOIS 2026
+; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Generated: 2026-03-25 by gen_layer0_signature.py
 ;
 ; Key design decisions:
@@ -26,7 +26,7 @@
 ;   - Issue 3: founds-rem and founds-imm in SMT2_RELATOR_PREDICATES.
 ; --------------------------------------------------------------------------
 (set-logic UF)
-(set-info :source |Mohammed et al., What Does ODRL Mean? FOIS 2026|)
+(set-info :source |[Anonymous] et al., What Does ODRL Mean? FOIS 2026|)
 (set-info :status unknown)
 
 ; --------------------------------------------------------------------------

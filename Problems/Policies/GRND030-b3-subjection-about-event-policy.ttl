@@ -2,7 +2,7 @@
 # File     : GRND030-b3-subjection-about-event-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : B3 alone: Subjection in remedy relator concerns founding event
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-26 by gen_foundation_problems.py
 # Links    : Entailment/GRND030-b3-subjection-about-event-1.p
 #            Entailment/GRND030-b3-subjection-about-event-1.smt2

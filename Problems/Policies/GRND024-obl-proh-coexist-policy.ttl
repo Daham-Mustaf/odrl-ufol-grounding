@@ -2,7 +2,7 @@
 # File     : GRND024-obl-proh-coexist-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Obligation + Prohibition coexist: Duty(a) vs Duty(rfr(a)) distinct
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-26 by gen_foundation_problems.py
 # Links    : Discriminating/GRND024-obl-proh-coexist-1.p
 #            Discriminating/GRND024-obl-proh-coexist-1.smt2

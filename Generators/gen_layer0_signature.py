@@ -24,7 +24,7 @@ from datetime import date
 
 META = {
     "domain":  "Deontic Ontology / ODRL Grounding",
-    "source":  "Mohammed et al., What Does ODRL Mean? FOIS 2026",
+    "source":  "[Anonymous] et al., What Does ODRL Mean? FOIS 2026",
     "version": "1.5",
 }
 

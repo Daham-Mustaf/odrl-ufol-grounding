@@ -2,7 +2,7 @@
 # File     : GRND011-obl-relator-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Obligation creates Duty and Right
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-26 by gen_foundation_problems.py
 # Links    : Entailment/GRND011-obl-relator-1.p
 #            Entailment/GRND011-obl-relator-1.smt2

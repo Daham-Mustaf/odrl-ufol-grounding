@@ -2,7 +2,7 @@
 # File     : GRND008-regimented-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Regimented prohibition: contradiction
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-26 by gen_foundation_problems.py
 # Links    : Discriminating/GRND008-regimented-1.p
 #            Discriminating/GRND008-regimented-1.smt2

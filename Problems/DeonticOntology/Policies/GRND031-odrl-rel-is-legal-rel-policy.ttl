@@ -2,7 +2,7 @@
 # File     : GRND031-odrl-rel-is-legal-rel-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Ax5.11: ODRL relator is a UFO legal relator
-# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 # Generated: 2026-03-27 by gen_foundation_problems.py
 # Links    : Entailment/GRND031-odrl-rel-is-legal-rel-1.p
 #            Entailment/GRND031-odrl-rel-is-legal-rel-1.smt2
