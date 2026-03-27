@@ -1,0 +1,31 @@
+# ------------------------------------------------------------------------------
+# File     : GRND004-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Prohibition with remedy creates Power and Subjection
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND004-1.p
+#            Entailment/GRND004-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+<drk:policy-concert-remedy> a odrl:Agreement ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee <drk:MusicMarketplaceAG> ;
+        odrl:assigner <drk:PhilharmonieBerlin> ;
+        odrl:action   odrl:distribute ;
+        odrl:target   <drk:ConcertRecordingDataset> ;
+        odrl:remedy   [ a odrl:Duty ;
+            odrl:action odrl:compensate ] ] .
+<drk:ConcertRecordingDataset> a dcat:Dataset ;
+    schema:name "Philharmonie Berlin Concert Recordings" .
+<drk:PhilharmonieBerlin>  a schema:Organization .
+<drk:MusicMarketplaceAG>  a schema:Organization .
+# Power(drk:PhilharmonieBerlin, decl(distribute)) constituted at activation
+# in fresh competence relator rho_R (Ax5.4 via founds_rem).
+# Abstract constants: marketplace=drk:MusicMarketplaceAG,
+#   philharmonie=drk:PhilharmonieBerlin, distrib=odrl:distribute,
+#   concert_ds=drk:ConcertRecordingDataset

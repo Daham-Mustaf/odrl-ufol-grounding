@@ -1,0 +1,13 @@
+# ------------------------------------------------------------------------------
+# File     : GRND027-unique-event-rem-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Unique event rem: same relator+rule founded by at most one event
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND027-unique-event-rem-1.p
+#            Entailment/GRND027-unique-event-rem-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:  <http://w3id.org/drk/ontology/> .
+# A remedy relator is individuated by a unique founding event.

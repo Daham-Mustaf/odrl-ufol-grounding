@@ -1,0 +1,13 @@
+# ------------------------------------------------------------------------------
+# File     : GRND032-odrl-rel-typing-rem-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Ax5.7 rem: founds_rem + proh => odrl_rel
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND032-odrl-rel-typing-rem-1.p
+#            Entailment/GRND032-odrl-rel-typing-rem-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:  <http://w3id.org/drk/ontology/> .
+# Ax5.7 rem: a remedy relator founded by a prohibition is an ODRL relator.

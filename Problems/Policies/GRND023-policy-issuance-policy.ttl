@@ -1,0 +1,33 @@
+# ------------------------------------------------------------------------------
+# File     : GRND023-policy-issuance-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Policy issuance: issue/1 injectivity (distinct rules => distinct acts)
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-26 by gen_foundation_problems.py
+# Links    : Discriminating/GRND023-policy-issuance-1.p
+#            Discriminating/GRND023-policy-issuance-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+# Policy issuance authority test.
+# Two distinct policies — their issue() acts must be distinct.
+drk:policy-issuance-1 a odrl:Agreement ;
+    odrl:obligation [ a odrl:Duty ;
+        odrl:assignee drk:PhilharmonieBerlin ;
+        odrl:assigner drk:FraunhoferFIT ;
+        odrl:action   odrl:distribute ;
+        odrl:target   drk:ConcertRecordingDataset ] .
+drk:policy-issuance-2 a odrl:Agreement ;
+    odrl:obligation [ a odrl:Duty ;
+        odrl:assignee drk:StaatlicheMuseenBerlin ;
+        odrl:assigner drk:FraunhoferFIT ;
+        odrl:action   odrl:read ;
+        odrl:target   drk:MuseumCollectionAPI ] .
+drk:ConcertRecordingDataset a dcat:Dataset .
+drk:MuseumCollectionAPI     a dcat:DataService .
+drk:PhilharmonieBerlin      a schema:Organization .
+drk:StaatlicheMuseenBerlin  a schema:Organization .
+drk:FraunhoferFIT           a schema:Organization .

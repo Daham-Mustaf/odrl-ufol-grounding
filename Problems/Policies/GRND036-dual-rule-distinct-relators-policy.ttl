@@ -1,0 +1,39 @@
+# ------------------------------------------------------------------------------
+# File     : GRND036-dual-rule-distinct-relators-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Dual-rule: two remedy relators from distinct providers are distinct
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-26 by gen_foundation_problems.py
+# Links    : Discriminating/GRND036-dual-rule-distinct-relators-1.p
+#            Discriminating/GRND036-dual-rule-distinct-relators-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+# Same as GRND035 — two provider policies, distinct remedy relators.
+drk:pol1 a odrl:Agreement ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:BerlinerEnsemble ;
+        odrl:action   odrl:distribute ;
+        odrl:target   drk:TheaterShowtimeDataset ;
+        odrl:remedy   [ a odrl:Duty ;
+            odrl:action   odrl:compensate ;
+            odrl:assignee drk:BerlinerEnsemble ] ] .
+drk:pol2 a odrl:Agreement ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
+        odrl:action   odrl:distribute ;
+        odrl:target   drk:MuseumCollectionAPI ;
+        odrl:remedy   [ a odrl:Duty ;
+            odrl:action odrl:delete ] ] .
+drk:TheaterShowtimeDataset          a dcat:Dataset .
+drk:MuseumCollectionAPI             a dcat:DataService .
+drk:BerlinerEnsemble                a schema:Organization .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
+# The two remedy relators are distinct because they are founded by
+# distinct rules (pol1 ≠ pol2) — enforcement authority is provider-specific.

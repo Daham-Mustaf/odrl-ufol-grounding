@@ -1,0 +1,3 @@
+session ODRLDeonticOntology in "." = HOL +
+  theories
+    ODRLDeonticOntology

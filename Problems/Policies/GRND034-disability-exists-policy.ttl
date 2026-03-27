@@ -1,0 +1,23 @@
+# ------------------------------------------------------------------------------
+# File     : GRND034-disability-exists-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Strong perm creates Disability in assigner (positive conjecture)
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-26 by gen_foundation_problems.py
+# Links    : Entailment/GRND034-disability-exists-1.p
+#            Entailment/GRND034-disability-exists-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+drk:policy-disability-exists a odrl:Agreement ;
+    odrl:permission [ a odrl:Permission ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
+        odrl:action   odrl:read ;
+        odrl:target   drk:MuseumCollectionAPI ] .
+drk:MuseumCollectionAPI             a dcat:DataService .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .

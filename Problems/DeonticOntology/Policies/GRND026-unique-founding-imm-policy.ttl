@@ -1,0 +1,14 @@
+# ------------------------------------------------------------------------------
+# File     : GRND026-unique-founding-imm-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Unique founding imm: same event+rule founds at most one immunity relator
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND026-unique-founding-imm-1.p
+#            Entailment/GRND026-unique-founding-imm-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:  <http://w3id.org/drk/ontology/> .
+# Uniqueness: activating the same strong permission at the same event
+# cannot produce two distinct immunity relators.

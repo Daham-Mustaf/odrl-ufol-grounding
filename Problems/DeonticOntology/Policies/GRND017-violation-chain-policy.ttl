@@ -1,0 +1,33 @@
+# ------------------------------------------------------------------------------
+# File     : GRND017-violation-chain-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : A1-A3+B1: violation triggers norm state change requiring Power
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND017-violation-chain-1.p
+#            Entailment/GRND017-violation-chain-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+drk:policy-violation-chain a odrl:Agreement ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:MusicMarketplaceAG ;
+        odrl:assigner drk:PhilharmonieBerlin ;
+        odrl:action   odrl:distribute ;
+        odrl:target   drk:ConcertRecordingDataset ;
+        odrl:remedy   [ a odrl:Duty ;
+            odrl:action odrl:compensate ] ] .
+drk:ConcertRecordingDataset a dcat:Dataset .
+drk:PhilharmonieBerlin      a schema:Organization .
+drk:MusicMarketplaceAG      a schema:Organization .
+# drk:MusicMarketplaceAG violates the prohibition.
+# The violation triggers a normative state change (B1),
+# which requires an institutional event (A1),
+# which requires a competent agent (A2),
+# whose competence is a Power-Subjection pair (A3).
+# Abstract constants: marketplace=drk:MusicMarketplaceAG,
+#   philharmonie=drk:PhilharmonieBerlin, distrib=odrl:distribute,
+#   concert_ds=drk:ConcertRecordingDataset

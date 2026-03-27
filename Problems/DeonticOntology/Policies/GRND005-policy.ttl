@@ -1,0 +1,21 @@
+# ------------------------------------------------------------------------------
+# File     : GRND005-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Permission-Duty conflict detection (single relator)
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND005-1.p
+#            Entailment/GRND005-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+# Conflict witness — not a valid standalone policy.
+# Ground instance asserts:
+#   Permission(drk:UniversitaetsbibliothekMuenchen, read, drk:TheaterShowtimeDataset)
+# AND
+#   Duty(drk:UniversitaetsbibliothekMuenchen, rfr(read), drk:TheaterShowtimeDataset)
+# in the same relator. ax:conflict (Corollary of Ax5.9) derives False.
+# Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
+#   read=odrl:read, theater_ds=drk:TheaterShowtimeDataset

@@ -1,0 +1,27 @@
+# ------------------------------------------------------------------------------
+# File     : GRND036-dual-rule-unique-rem-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Dual-rule unique rem: same event+rule founds at most one remedy relator
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-26 by gen_foundation_problems.py
+# Links    : Discriminating/GRND036-dual-rule-unique-rem-1.p
+#            Discriminating/GRND036-dual-rule-unique-rem-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+# Uniqueness test: same rule pol1 at same event e1 => same remedy relator.
+drk:pol1 a odrl:Agreement ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:BerlinerEnsemble ;
+        odrl:action   odrl:distribute ;
+        odrl:target   drk:TheaterShowtimeDataset ;
+        odrl:remedy   [ a odrl:Duty ;
+            odrl:action   odrl:compensate ;
+            odrl:assignee drk:BerlinerEnsemble ] ] .
+drk:TheaterShowtimeDataset          a dcat:Dataset .
+drk:BerlinerEnsemble                a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .

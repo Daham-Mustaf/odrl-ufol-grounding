@@ -1,0 +1,38 @@
+# ------------------------------------------------------------------------------
+# File     : GRND035-dual-rule-remedy-chain-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Dual-rule: Power in remedy relator concerns founding event (B2)
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-26 by gen_foundation_problems.py
+# Links    : Entailment/GRND035-dual-rule-remedy-chain-1.p
+#            Entailment/GRND035-dual-rule-remedy-chain-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+# ProviderA: BerlinerEnsemble prohibits distribution, remedy = compensate
+drk:pol1 a odrl:Agreement ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:BerlinerEnsemble ;
+        odrl:action   odrl:distribute ;
+        odrl:target   drk:TheaterShowtimeDataset ;
+        odrl:remedy   [ a odrl:Duty ;
+            odrl:action   odrl:compensate ;
+            odrl:assignee drk:BerlinerEnsemble ] ] .
+# ProviderB: StaatlicheMuseenBerlin prohibits distribution, remedy = delete
+drk:pol2 a odrl:Agreement ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
+        odrl:action   odrl:distribute ;
+        odrl:target   drk:MuseumCollectionAPI ;
+        odrl:remedy   [ a odrl:Duty ;
+            odrl:action odrl:delete ] ] .
+drk:TheaterShowtimeDataset          a dcat:Dataset .
+drk:MuseumCollectionAPI             a dcat:DataService .
+drk:BerlinerEnsemble                a schema:Organization .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .

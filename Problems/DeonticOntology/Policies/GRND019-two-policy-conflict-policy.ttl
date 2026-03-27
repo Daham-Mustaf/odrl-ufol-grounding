@@ -1,0 +1,39 @@
+# ------------------------------------------------------------------------------
+# File     : GRND019-two-policy-conflict-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Two policies conflict: competing Rights from distinct assigners
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Discriminating/GRND019-two-policy-conflict-1.p
+#            Discriminating/GRND019-two-policy-conflict-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+# Two competing prohibitions from different assigners over the same asset.
+# Combined with an existing Permission => conflict.
+drk:policy-conflict-two a odrl:Agreement ;
+    odrl:permission  [ a odrl:Permission ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:BerlinerEnsemble ;
+        odrl:action   odrl:read ;
+        odrl:target   drk:TheaterShowtimeDataset ] ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
+        odrl:action   odrl:read ;
+        odrl:target   drk:TheaterShowtimeDataset ] ;
+    odrl:prohibition [ a odrl:Prohibition ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:PhilharmonieBerlin ;
+        odrl:action   odrl:read ;
+        odrl:target   drk:TheaterShowtimeDataset ] .
+drk:TheaterShowtimeDataset          a dcat:Dataset .
+drk:BerlinerEnsemble                a schema:Organization .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:PhilharmonieBerlin              a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
+# Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
+#   museen=drk:StaatlicheMuseenBerlin, philharmonie=drk:PhilharmonieBerlin

@@ -1,0 +1,15 @@
+# ------------------------------------------------------------------------------
+# File     : GRND013-corr-power-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Correlativity: Power implies unique Subjection in relator
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND013-corr-power-1.p
+#            Entailment/GRND013-corr-power-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+# Correlativity: every Power in an ODRL relator has a unique correlative Subjection.
+# Grounded in a prohibition-with-remedy relator over drk:ConcertRecordingDataset.

@@ -1,0 +1,16 @@
+# ------------------------------------------------------------------------------
+# File     : GRND022-corr-nonunique-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Correlativity violated: two NoRight positions in same relator
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Discriminating/GRND022-corr-nonunique-1.p
+#            Discriminating/GRND022-corr-nonunique-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+# Correlativity uniqueness test:
+# A relator cannot contain two distinct NoRight positions
+# with the same content — correlativity requires exactly one.

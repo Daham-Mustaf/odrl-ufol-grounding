@@ -1,0 +1,29 @@
+# ------------------------------------------------------------------------------
+# File     : GRND020-strong-perm-full-h2-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Strong permission full H2: Disability blocks same assigner prohibition
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-26 by gen_foundation_problems.py
+# Links    : Discriminating/GRND020-strong-perm-full-h2-1.p
+#            Discriminating/GRND020-strong-perm-full-h2-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://schema.org/> .
+# Strong permission: assigner holds Disability over the asset.
+# Assigner then attempts to issue a prohibition => blocked.
+drk:policy-strong-h2 a odrl:Agreement ;
+    odrl:permission [ a odrl:Permission ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
+        odrl:action   odrl:read ;
+        odrl:target   drk:MuseumCollectionAPI ] .
+# strong(p) asserted by profile extension.
+# drk:StaatlicheMuseenBerlin then attempts prohibition => contradiction.
+drk:MuseumCollectionAPI             a dcat:DataService .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
+# Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
+#   museen=drk:StaatlicheMuseenBerlin

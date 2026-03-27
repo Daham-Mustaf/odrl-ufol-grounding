@@ -1,0 +1,15 @@
+# ------------------------------------------------------------------------------
+# File     : GRND012-corr-duty-policy.ttl
+# Domain   : Deontic Ontology / ODRL Grounding
+# Problem  : Correlativity: Duty implies unique Right in relator
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-03-27 by gen_foundation_problems.py
+# Links    : Entailment/GRND012-corr-duty-1.p
+#            Entailment/GRND012-corr-duty-1.smt2
+# ------------------------------------------------------------------------------
+
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix drk:    <http://w3id.org/drk/ontology/> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+# Correlativity: every Duty in an ODRL relator has a unique correlative Right.
+# Tested on drk:TheaterShowtimeDataset prohibition relator.
