@@ -215,14 +215,14 @@ fof(ax_cross_relator, axiom,
     # Role = lemma (TPTP valid; 'corollary' is not a valid FOF role).
     # ------------------------------------------------------------------
     "ax_conflict": """\
-fof(ax_conflict, lemma,
+fof(ax_conflict, axiom,
     ! [Rho, L, D, X, A, T] :
       ( ( part_of(L,Rho) & part_of(D,Rho)
         & permission(L) & duty(D)
         & bearer(L,X) & bearer(D,X)
         & cnt(L,A,T)  & cnt(D,rfr(A),T) )
-     => $false )).""",
-
+     => $false )).
+""",
     # ------------------------------------------------------------------
     # Ax5.10  Disability Precludes Prohibition Creation
     # ------------------------------------------------------------------

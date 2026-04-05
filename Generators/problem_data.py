@@ -104,16 +104,16 @@ PROBLEMS = [
 @prefix drk:    <http://w3id.org/drk/ontology/> .
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-<drk:policy-theater-read> a odrl:Agreement ;
+drk:policy-theater-read> a odrl:Agreement ;
     odrl:permission [ a odrl:Permission ;
-        odrl:assignee <drk:UniversitaetsbibliothekMuenchen> ;
-        odrl:assigner <drk:BerlinerEnsemble> ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:BerlinerEnsemble ;
         odrl:action   odrl:read ;
-        odrl:target   <drk:TheaterShowtimeDataset> ] .
-<drk:TheaterShowtimeDataset>          a dcat:Dataset ;
+        odrl:target   drk:TheaterShowtimeDataset] .
+drk:TheaterShowtimeDataset>          a dcat:Dataset ;
     schema:name "Berliner Ensemble Showtime Dataset" .
-<drk:BerlinerEnsemble>                a schema:Organization .
-<drk:UniversitaetsbibliothekMuenchen> a schema:Organization .
+drk:BerlinerEnsemble                    a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen     a schema:Organization .
 # Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 #   ensemble=drk:BerlinerEnsemble, read=odrl:read,
 #   theater_ds=drk:TheaterShowtimeDataset""",
@@ -169,16 +169,16 @@ fof(act_e1_p1,        axiom, activates(e1, p1)).
 @prefix drk:    <http://w3id.org/drk/ontology/> .
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-<drk:policy-theater-read> a odrl:Agreement ;
+drk:policy-theater-read a odrl:Agreement ;
     odrl:permission [ a odrl:Permission ;
-        odrl:assignee <drk:UniversitaetsbibliothekMuenchen> ;
-        odrl:assigner <drk:BerlinerEnsemble> ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchens ;
+        odrl:assigner drk:BerlinerEnsemble ;
         odrl:action   odrl:read ;
-        odrl:target   <drk:TheaterShowtimeDataset> ] .
-<drk:TheaterShowtimeDataset>          a dcat:Dataset ;
+        odrl:target   drk:TheaterShowtimeDataset ] .
+drk:TheaterShowtimeDataset               a dcat:Dataset ;
     schema:name "Berliner Ensemble Showtime Dataset" .
-<drk:BerlinerEnsemble>                a schema:Organization .
-<drk:UniversitaetsbibliothekMuenchen> a schema:Organization .
+drk:BerlinerEnsemble                    a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen     a schema:Organization .
 # Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 #   ensemble=drk:BerlinerEnsemble, read=odrl:read,
 #   theater_ds=drk:TheaterShowtimeDataset""",
@@ -244,16 +244,16 @@ fof(act_e1_p1,        axiom, activates(e1, p1)).
 @prefix drk:    <http://w3id.org/drk/ontology/> .
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-<drk:policy-no-distribute> a odrl:Agreement ;
+drk:policy-no-distribute> a odrl:Agreement ;
     odrl:prohibition [ a odrl:Prohibition ;
-        odrl:assignee <drk:StreamingPortalGmbH> ;
-        odrl:assigner <drk:StaatlicheMuseenBerlin> ;
+        odrl:assignee drk:StreamingPortalGmbH ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
         odrl:action   odrl:distribute ;
-        odrl:target   <drk:MuseumCollectionAPI> ] .
-<drk:MuseumCollectionAPI>    a dcat:DataService ;
+        odrl:target   drk:MuseumCollectionAPI ] .
+drk:MuseumCollectionAPI    a dcat:DataService ;
     schema:name "Staatliche Museen Berlin Collection API" .
-<drk:StaatlicheMuseenBerlin> a schema:Organization .
-<drk:StreamingPortalGmbH>    a schema:Organization .
+drk:StaatlicheMuseenBerlin a schema:Organization .
+drk:StreamingPortalGmbH    a schema:Organization .
 # Abstract constants: portal=drk:StreamingPortalGmbH,
 #   museen=drk:StaatlicheMuseenBerlin, distrib=odrl:distribute,
 #   museum_api=drk:MuseumCollectionAPI""",
@@ -321,18 +321,18 @@ fof(act_e1_f1,        axiom, activates(e1, f1)).
 @prefix drk:    <http://w3id.org/drk/ontology/> .
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-<drk:policy-concert-remedy> a odrl:Agreement ;
+drk:policy-concert-remedy a odrl:Agreement ;
     odrl:prohibition [ a odrl:Prohibition ;
-        odrl:assignee <drk:MusicMarketplaceAG> ;
-        odrl:assigner <drk:PhilharmonieBerlin> ;
+        odrl:assignee drk:MusicMarketplaceAG ;
+        odrl:assigner drk:PhilharmonieBerlin ;
         odrl:action   odrl:distribute ;
-        odrl:target   <drk:ConcertRecordingDataset> ;
+        odrl:target   drk:ConcertRecordingDataset ;
         odrl:remedy   [ a odrl:Duty ;
             odrl:action odrl:compensate ] ] .
-<drk:ConcertRecordingDataset> a dcat:Dataset ;
+drk:ConcertRecordingDataset               a dcat:Dataset ;
     schema:name "Philharmonie Berlin Concert Recordings" .
-<drk:PhilharmonieBerlin>  a schema:Organization .
-<drk:MusicMarketplaceAG>  a schema:Organization .
+drk:PhilharmonieBerlin  a schema:Organization .
+drk:MusicMarketplaceAG  a schema:Organization .
 # Power(drk:PhilharmonieBerlin, decl(distribute)) constituted at activation
 # in fresh competence relator rho_R (Ax5.4 via founds_rem).
 # Abstract constants: marketplace=drk:MusicMarketplaceAG,
@@ -470,10 +470,10 @@ fof(partof_d,         axiom, part_of(d, rho1)).
         odrl:assigner <drk:BerlinerEnsemble> ;
         odrl:action   odrl:use ;
         odrl:target   <drk:PlayProductionMetadataDataset> ] .
-<drk:PlayProductionMetadataDataset>   a dcat:Dataset ;
+drk:PlayProductionMetadataDataset   a dcat:Dataset ;
     schema:name "Berliner Ensemble Play Production Metadata" .
-<drk:BerlinerEnsemble>                a schema:Organization .
-<drk:UniversitaetsbibliothekMuenchen> a schema:Organization .
+drk:BerlinerEnsemble               a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
 # Permission(Bibliothek) entails unique NoRight(Ensemble) in relator.
 # Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 #   ensemble=drk:BerlinerEnsemble, use_act=odrl:use,
@@ -663,10 +663,10 @@ fof(no_permission_modify,   axiom,
         odrl:target   <drk:ConcertRecordingDataset> ;
         odrl:remedy   [ a odrl:Duty ;
             odrl:action odrl:compensate ] ] .
-<drk:ConcertRecordingDataset> a dcat:Dataset ;
+drk:ConcertRecordingDataset a dcat:Dataset ;
     schema:name "Philharmonie Berlin Concert Recordings" .
-<drk:PhilharmonieBerlin> a schema:Organization .
-<drk:MusicMarketplaceAG> a schema:Organization .
+drk:PhilharmonieBerlin a schema:Organization .
+drk:MusicMarketplaceAG a schema:Organization .
 # drk:MusicMarketplaceAG performs distribute => violation reachable.
 # Power(drk:PhilharmonieBerlin, decl(distribute)) constituted at activation.
 # Abstract constants: marketplace=drk:MusicMarketplaceAG,
@@ -741,8 +741,8 @@ fof(marketplace_does,   axiom, does(marketplace, distrib, concert_ds)).
         odrl:assignee <drk:MusicMarketplaceAG> ;
         odrl:action   odrl:distribute ;
         odrl:target   <drk:ConcertRecordingDataset> ] .
-<drk:ConcertRecordingDataset> a dcat:Dataset .
-<drk:MusicMarketplaceAG>      a schema:Organization .
+drk:ConcertRecordingDataset               a dcat:Dataset .
+drk:MusicMarketplaceAG      a schema:Organization .
 # Regimented reading: does(MusicMarketplaceAG, distribute) impossible.
 # No remedy — regimentation makes violation structurally impossible.
 # Ground witness asserts does => contradiction.
@@ -807,16 +807,16 @@ fof(marketplace_does,   axiom, does(marketplace, distrib, concert_ds)).
 @prefix drk:    <http://w3id.org/drk/ontology/> .
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-<drk:policy-strong> a odrl:Agreement ;
+drk:policy-strong a odrl:Agreement ;
     odrl:permission [ a odrl:Permission ;
-        odrl:assignee <drk:UniversitaetsbibliothekMuenchen> ;
-        odrl:assigner <drk:StaatlicheMuseenBerlin> ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
         odrl:action   odrl:read ;
-        odrl:target   <drk:MuseumCollectionAPI> ] .
-<drk:MuseumCollectionAPI>             a dcat:DataService ;
+        odrl:target   drk:MuseumCollectionAPI ] .
+drk:MuseumCollectionAPI             a dcat:DataService ;
     schema:name "Staatliche Museen Berlin Collection API" .
-<drk:StaatlicheMuseenBerlin>          a schema:Organization .
-<drk:UniversitaetsbibliothekMuenchen> a schema:Organization .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
 # strong(p) asserted (profile extension, not ODRL 2.2).
 # Immunity(bibliothek) + Disability(museen).
 # museen attempts prohibition => blocked by Disability (Ax5.10).
@@ -898,20 +898,20 @@ fof(tgt_f2,           axiom, tgt(f2, museum_api)).
 @prefix drk:    <http://w3id.org/drk/ontology/> .
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-<drk:policy-conflict> a odrl:Agreement ;
+drk:policy-conflict a odrl:Agreement ;
     odrl:permission  [ a odrl:Permission ;
-        odrl:assignee <drk:UniversitaetsbibliothekMuenchen> ;
-        odrl:assigner <drk:StaatlicheMuseenBerlin> ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
         odrl:action   odrl:read ;
-        odrl:target   <drk:MuseumCollectionAPI> ] ;
+        odrl:target   drk:MuseumCollectionAPI ] ;
     odrl:prohibition [ a odrl:Prohibition ;
-        odrl:assignee <drk:UniversitaetsbibliothekMuenchen> ;
-        odrl:assigner <drk:StaatlicheMuseenBerlin> ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
         odrl:action   odrl:read ;
-        odrl:target   <drk:MuseumCollectionAPI> ] .
-<drk:MuseumCollectionAPI>             a dcat:DataService .
-<drk:StaatlicheMuseenBerlin>          a schema:Organization .
-<drk:UniversitaetsbibliothekMuenchen> a schema:Organization .
+        odrl:target   drk:MuseumCollectionAPI ] .
+drk:MuseumCollectionAPI             a dcat:DataService .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
 # Weak permission (no Immunity/Disability).
 # Prohibition creates Duty(rfr(read)) => Permission + Duty conflict => False.
 # Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
