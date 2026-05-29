@@ -2,8 +2,8 @@
 # File     : GRND008-sanctioned-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Sanctioned prohibition: violation reachable, remedy norm fires
-# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-03-27 by gen_foundation_problems.py
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-05-29 by gen_foundation_problems.py
 # Links    : Discriminating/GRND008-sanctioned-1.p
 #            Discriminating/GRND008-sanctioned-1.smt2
 # ------------------------------------------------------------------------------
@@ -20,10 +20,10 @@
         odrl:target   <drk:ConcertRecordingDataset> ;
         odrl:remedy   [ a odrl:Duty ;
             odrl:action odrl:compensate ] ] .
-<drk:ConcertRecordingDataset> a dcat:Dataset ;
+drk:ConcertRecordingDataset a dcat:Dataset ;
     schema:name "Philharmonie Berlin Concert Recordings" .
-<drk:PhilharmonieBerlin> a schema:Organization .
-<drk:MusicMarketplaceAG> a schema:Organization .
+drk:PhilharmonieBerlin a schema:Organization .
+drk:MusicMarketplaceAG a schema:Organization .
 # drk:MusicMarketplaceAG performs distribute => violation reachable.
 # Power(drk:PhilharmonieBerlin, decl(distribute)) constituted at activation.
 # Abstract constants: marketplace=drk:MusicMarketplaceAG,

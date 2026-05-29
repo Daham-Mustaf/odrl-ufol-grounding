@@ -5,7 +5,7 @@
 % Status   : Unsatisfiable
 % Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND016-conflict-relator-policy.ttl
-% Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 %
 % % Permission(l) and Duty(d) both partOf rho1, same bearer, same content.
 % % Corollary ax:conflict derives False (within-relator check).
@@ -28,13 +28,14 @@ include('Axioms/Layer0-Signature/GRND000-0.ax').
 % NOTE: FOF inlines per-problem subsets only (fof_axioms key) to avoid
 % Vampire timeouts. SMT-LIB embeds the full axiom set (Z3 does not
 % timeout on the full set). This asymmetry is intentional.
-fof(ax_conflict, lemma,
+fof(ax_conflict, axiom,
     ! [Rho, L, D, X, A, T] :
       ( ( part_of(L,Rho) & part_of(D,Rho)
         & permission(L) & duty(D)
         & bearer(L,X) & bearer(D,X)
         & cnt(L,A,T)  & cnt(D,rfr(A),T) )
      => $false )).
+
 
 %--------------------------------------------------------------------------
 % Appendix A.0 extra predicates (declared via axiom context in Layer1)

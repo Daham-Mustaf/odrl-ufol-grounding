@@ -4,7 +4,7 @@
 ; Version  : 1.5
 ; Axioms   : Layer 1 deontic grounding axioms (Ax5.1-5.10, A1-A3, B1-B3)
 ; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-03-27 by gen_layer1_deontic.py
+; Generated: 2026-05-29 by gen_layer1_deontic.py
 ;
 ; NOTE: SMT-LIB 2 has no include directive.
 ; These axioms are embedded directly in each .smt2 problem file.

@@ -2,8 +2,8 @@
 # File     : GRND009-no-immunity-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Weak permission: Permission+Duty conflict when prohibition added
-# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-03-27 by gen_foundation_problems.py
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-05-29 by gen_foundation_problems.py
 # Links    : Discriminating/GRND009-no-immunity-1.p
 #            Discriminating/GRND009-no-immunity-1.smt2
 # ------------------------------------------------------------------------------
@@ -12,20 +12,20 @@
 @prefix drk:    <http://w3id.org/drk/ontology/> .
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-<drk:policy-conflict> a odrl:Agreement ;
+drk:policy-conflict a odrl:Agreement ;
     odrl:permission  [ a odrl:Permission ;
-        odrl:assignee <drk:UniversitaetsbibliothekMuenchen> ;
-        odrl:assigner <drk:StaatlicheMuseenBerlin> ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
         odrl:action   odrl:read ;
-        odrl:target   <drk:MuseumCollectionAPI> ] ;
+        odrl:target   drk:MuseumCollectionAPI ] ;
     odrl:prohibition [ a odrl:Prohibition ;
-        odrl:assignee <drk:UniversitaetsbibliothekMuenchen> ;
-        odrl:assigner <drk:StaatlicheMuseenBerlin> ;
+        odrl:assignee drk:UniversitaetsbibliothekMuenchen ;
+        odrl:assigner drk:StaatlicheMuseenBerlin ;
         odrl:action   odrl:read ;
-        odrl:target   <drk:MuseumCollectionAPI> ] .
-<drk:MuseumCollectionAPI>             a dcat:DataService .
-<drk:StaatlicheMuseenBerlin>          a schema:Organization .
-<drk:UniversitaetsbibliothekMuenchen> a schema:Organization .
+        odrl:target   drk:MuseumCollectionAPI ] .
+drk:MuseumCollectionAPI             a dcat:DataService .
+drk:StaatlicheMuseenBerlin          a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
 # Weak permission (no Immunity/Disability).
 # Prohibition creates Duty(rfr(read)) => Permission + Duty conflict => False.
 # Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,

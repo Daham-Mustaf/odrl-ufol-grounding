@@ -5,7 +5,7 @@
 ; Status   : unsat
 ; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Policy   : Policies/GRND009-immunity-policy.ttl
-; Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+; Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 ;
 ; H2 = {Permission, NoRight, Immunity, Disability}.
 ; museen attempts proh(f2). Ax5.10: Disability + proh => False.
@@ -18,7 +18,7 @@
 ; @prefix drk:    <http://w3id.org/drk/ontology/> .
 ; @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 ; @prefix schema: <https://schema.org/> .
-; <drk:policy-strong> a odrl:Agreement ;
+; drk:policy-strong a odrl:Agreement ;
 ; ... (15 more lines — see Policies/ file)
 ; --------------------------------------------------------------------------
 
@@ -36,7 +36,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-03-27 by gen_layer0_signature.py
+; Generated: 2026-05-29 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

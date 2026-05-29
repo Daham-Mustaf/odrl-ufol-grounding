@@ -5,7 +5,7 @@
 % Status   : Theorem
 % Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND025-unique-founding-rem-policy.ttl
-% Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 %
 % % founds_rem(e1,rho1,f1) and founds_rem(e1,rho2,f1) => rho1 = rho2.
 % % UFO uniqueness for remedy relator — mirrors GRND015 for founds_rem.

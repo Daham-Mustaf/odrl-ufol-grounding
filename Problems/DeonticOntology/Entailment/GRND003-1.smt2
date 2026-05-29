@@ -5,7 +5,7 @@
 ; Status   : unsat
 ; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Policy   : Policies/GRND003-policy.ttl
-; Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+; Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 ;
 ; proh(f1) activated by e1 entails Duty(portal,rfr(distrib),museum_api)
 ; and Right(museen,rfr(distrib),museum_api).
@@ -18,7 +18,7 @@
 ; @prefix drk:    <http://w3id.org/drk/ontology/> .
 ; @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 ; @prefix schema: <https://schema.org/> .
-; <drk:policy-no-distribute> a odrl:Agreement ;
+; drk:policy-no-distribute> a odrl:Agreement ;
 ; ... (12 more lines — see Policies/ file)
 ; --------------------------------------------------------------------------
 
@@ -36,7 +36,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-03-27 by gen_layer0_signature.py
+; Generated: 2026-05-29 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

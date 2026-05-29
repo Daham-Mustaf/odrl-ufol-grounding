@@ -5,7 +5,7 @@
 ; Status   : unsat
 ; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Policy   : Policies/GRND011-obl-relator-policy.ttl
-; Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+; Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 ;
 ; obl(obl1) activated by e1 entails Duty(bibliothek,read,play_ds)
 ; and Right(ensemble,read,play_ds).
@@ -36,7 +36,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-03-27 by gen_layer0_signature.py
+; Generated: 2026-05-29 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

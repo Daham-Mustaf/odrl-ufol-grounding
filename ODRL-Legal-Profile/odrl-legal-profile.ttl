@@ -5,9 +5,10 @@
 @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
 @prefix odrl-l: <https://w3id.org/odrl-legal/> .
 @prefix dct:    <http://purl.org/dc/terms/> .
+@prefix vann:   <http://purl.org/vocab/vann/> .
 
 odrl-l: a owl:Ontology ;
-    dct:title       "ODRL Deontic-Legal Profile" ;
+    dct:title       "ODRL Deontic-Legal Profile"@en ;
     dct:description """OWL approximation of the UFO-L grounding of ODRL 2.2.
         Surfaces 8 legal positions (Table 1) from the 2 positions implicit
         in ODRL evaluators. 15 classes, 8 properties.
@@ -16,17 +17,32 @@ odrl-l: a owl:Ontology ;
         (action argument) and odrl:target (target argument); rfr(a)
         forbearances are not OWL-representable and are handled in the
         TPTP/SMT-LIB benchmark encodings.
-        Ax5.8 (Correlativity) and Ax5.9 (Normative Position
+        Ax5.9 (Correlativity) and Ax5.10 (Normative Position
         Incompatibility) require qualified cardinality or full FOL
         and are not encoded in this OWL layer; see the TPTP/SMT-LIB
-        benchmark encodings.""" ;
+        benchmark encodings."""@en ;
+    vann:preferredNamespacePrefix "odrl-l" ;
+    vann:preferredNamespaceUri    "https://w3id.org/odrl-legal/" ;
+    dct:creator     "Daham M. Mustafa" ,
+                    "Christoph Lange" ,
+                    "Giancarlo Guizzardi" ,
+                    "Diego Collarana" ,
+                    "Christoph Quix" ,
+                    "Stefan Decker" ;
+    dct:bibliographicCitation """Daham M. Mustafa, Christoph Lange, Giancarlo Guizzardi, Diego Collarana, Christoph Quix, and Stefan Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L. In Proc. 16th Int. Conf. on Formal Ontology in Information Systems (FOIS 2026), Frontiers in Artificial Intelligence and Applications, IOS Press, 2026."""@en ;
+    dct:license     <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:created     "2026-03-16"^^xsd:date ;
+    dct:modified    "2026-05-29"^^xsd:date ;
+    dct:issued      "2026"^^xsd:gYear ;
+    owl:versionInfo "1.0" ;
+    owl:versionIRI  <https://w3id.org/odrl-legal/1.0> ;
+    rdfs:seeAlso    <https://github.com/Daham-Mustaf/odrl-ufol-grounding> ;
     owl:imports     <http://www.w3.org/ns/odrl/2/> .
 
 # ═══════════════════════════════════════════════════════════════
 # 1 abstract superclass  +  8 leaf position classes  =  9 classes
 # ═══════════════════════════════════════════════════════════════
 
-# Fix 1: LegalPosition declared — was referenced but missing
 odrl-l:LegalPosition a owl:Class ;
     rdfs:label   "LegalPosition" ;
     rdfs:comment
@@ -150,7 +166,6 @@ odrl-l:ProhibitionRelator a owl:Class ;
          RemedyRelator (rho_R) is also founded via odrl-l:foundsRem;
          rho_F ≠ rho_R (Ax5.6)." .
 
-# Fix 2: ObligationRelator added — was missing despite Ax5.5 and rho_D in Def.3
 # rho_D: Duty-to-Act + Right-to-Action  (Ax5.5)
 odrl-l:ObligationRelator a owl:Class ;
     rdfs:subClassOf odrl-l:ODRLRelator ;
@@ -181,7 +196,6 @@ odrl-l:RemedyRelator a owl:Class ;
          Distinct from ProhibitionRelator: rho_F ≠ rho_R (Ax5.6).
          Power is constituted at activation, not at violation." .
 
-# Fix 3: relator classes declared disjoint
 [ a owl:AllDisjointClasses ;
     owl:members ( odrl-l:PermissionRelator
                   odrl-l:ProhibitionRelator
@@ -213,7 +227,6 @@ odrl-l:partOf a owl:ObjectProperty ;
          parts inhering in x and y respectively
          (Guizzardi 2005 p.240). Approximates partOf/2." .
 
-# (3) founds — Fix 4: range restricted to intended union
 odrl-l:founds a owl:ObjectProperty ;
     rdfs:range  [ a owl:Class ;
                   owl:unionOf ( odrl-l:PermissionRelator
@@ -246,7 +259,7 @@ odrl-l:foundsRem a owl:ObjectProperty ;
          carrying a remedy. Distinct property from odrl-l:founds ensures
          rho_F ≠ rho_R at the assertional level (Ax5.6)." .
 
-# (6) normContent — Fix minor: range added
+# (6) normContent
 odrl-l:normContent a owl:ObjectProperty ;
     rdfs:domain odrl-l:LegalPosition ;
     rdfs:range  odrl:Action ;

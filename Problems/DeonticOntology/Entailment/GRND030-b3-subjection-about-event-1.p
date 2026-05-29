@@ -5,7 +5,7 @@
 % Status   : Theorem
 % Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND030-b3-subjection-about-event-policy.ttl
-% Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 %
 % % Subjection(s) with cnt(s,decl(some_action),some_target) partOf rho_R,
 % % and founds_rem(e1,rho_R,f1) => about_event(s, e1).

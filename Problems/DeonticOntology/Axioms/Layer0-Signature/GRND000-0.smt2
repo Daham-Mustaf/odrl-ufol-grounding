@@ -10,7 +10,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-03-27 by gen_layer0_signature.py
+; Generated: 2026-05-29 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

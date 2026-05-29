@@ -5,7 +5,7 @@
 ; Status   : unsat
 ; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Policy   : Policies/GRND029-b2-power-about-event-policy.ttl
-; Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+; Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 ;
 ; Power(pw) with cnt(pw,decl(distrib),concert_ds) partOf rho_R,
 ; and founds_rem(e1,rho_R,f1) => about_event(pw, e1).
@@ -31,7 +31,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-03-27 by gen_layer0_signature.py
+; Generated: 2026-05-29 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

@@ -5,7 +5,7 @@
 ; Status   : unsat
 ; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 ; Policy   : Policies/GRND005-policy.ttl
-; Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+; Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 ;
 ; Permission(l,bibliothek,read,theater_ds) and Duty(d,bibliothek,rfr(read),theater_ds)
 ; in same relator rho1. Corollary ax:conflict derives False.
@@ -35,7 +35,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-03-27 by gen_layer0_signature.py
+; Generated: 2026-05-29 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

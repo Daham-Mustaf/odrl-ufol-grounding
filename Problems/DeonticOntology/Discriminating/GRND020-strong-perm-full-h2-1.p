@@ -5,7 +5,7 @@
 % Status   : Unsatisfiable
 % Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND020-strong-perm-full-h2-policy.ttl
-% Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 %
 % % perm(p1) + strong(p1) + activates(e1,p1).
 % % Ax5.2 (founds_imm): creates rho_I with Immunity(bibliothek,read,museum_api)

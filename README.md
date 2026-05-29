@@ -1,22 +1,22 @@
-# ODRL Grounding Benchmark
+# ODRL Grounding in UFO-L
 
-Mechanized verification benchmark for the paper:
-**"What Does ODRL Mean? Grounding Permissions, Prohibitions,
-and Duties in Deontic Logic and Foundational Ontology"**
+Mechanized verification benchmark and OWL profile for the paper:
+**"What Does ODRL Mean? A Cross-Level Ontological Grounding of
+Permissions, Prohibitions, and Duties in UFO-L"**
 
-39 problems (TPTP/FOF + SMT-LIB 2 + Turtle) verifying the
-UFO-L grounding of ODRL across three independent provers.
+39 problems (TPTP/FOF + SMT-LIB 2 + Turtle) verifying the UFO-L
+grounding of ODRL across three independent provers, plus the
+ODRL-Legal (`odrl-l:`) OWL profile.
 
 ## Repository structure
-
 ```
-Generators/   Python scripts that generate all problem files
-Problems/     Generated TPTP/FOF, SMT-LIB 2, and Turtle files
-Isabelle/     Isabelle/HOL mechanization
+Generators/           Python scripts that generate all problem files
+Problems/             Generated TPTP/FOF, SMT-LIB 2, and Turtle files
+Isabelle/             Isabelle/HOL mechanization
+ODRL-Legal-Profile/   OWL profile (odrl-l:): the ODRL-Legal profile
 ```
 
 ## Requirements
-
 - [Vampire 5.0.0](https://vprover.github.io/)
 - [Z3 4.12.2](https://github.com/Z3Prover/z3)
 - [E 3.2.5](https://wwwlehre.dhbw-stuttgart.de/~sschulz/E/E.html)
@@ -24,43 +24,40 @@ Isabelle/     Isabelle/HOL mechanization
 - Isabelle 2025 (for Isabelle/HOL verification only)
 
 ## Reproduce all results
-
 ```bash
-cd ~/odrl-grounding-benchmark
+cd ~/odrl-ufol-grounding
 
-# Step 1 — Generate axiom files
+# Step 1: Generate axiom files
 uv run Generators/gen_layer0_signature.py \
   --out-dir Problems/DeonticOntology/Axioms/Layer0-Signature
 uv run Generators/gen_layer1_deontic.py \
   --out-dir Problems/DeonticOntology/Axioms/Layer1-Deontic
 
-# Step 2 — Generate all 39 problems (117 files)
+# Step 2: Generate all 39 problems (117 files)
 uv run Generators/gen_foundation_problems.py \
   --out-dir Problems/DeonticOntology --dualrule
 
-# Step 3 — Validate: Vampire + Z3 (78 checks, all pass)
+# Step 3: Validate with Vampire + Z3 (78 checks)
 cd Generators
 uv run run_grnd_validation.py --dualrule --timeout 30
 
-# Step 4 — Validate: Vampire + E (75 checks, all pass)
+# Step 4: Validate with Vampire + E (75 checks)
 uv run run_grnd_validation.py --dualrule --timeout 30 \
   --eprover --vampire-only
 ```
 
 ## Isabelle/HOL
-
 ```bash
 isabelle build -D Isabelle/
 # Expected: Finished ODRLDeonticOntology in ~8s
 ```
 
 ## Results summary
-
 | Prover | Problems | Checks | Result |
 |---|---|---|---|
-| Vampire 5.0.0 | 39 | 39 | 39/39 ✓ |
-| Z3 4.12.2 | 39 | 39 | 39/39 ✓ |
-| E 3.2.5 | 36* | 36 | 36/36 ✓ |
-| Isabelle/HOL | — | 11 axioms + 23 lemmas | all ✓ |
+| Vampire 5.0.0 | 39 | 39 | 39/39 pass |
+| Z3 4.12.2 | 39 | 39 | 39/39 pass |
+| E 3.2.5 | 36* | 36 | 36/36 pass |
+| Isabelle/HOL | n/a | 11 axioms + 23 lemmas | all pass |
 
 \* E skips the 3 satisfiability problems (E is refutation-complete only).

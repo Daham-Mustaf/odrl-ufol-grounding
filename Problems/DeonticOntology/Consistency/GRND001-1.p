@@ -5,7 +5,7 @@
 % Status   : Satisfiable
 % Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND001-policy.ttl
-% Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 %
 % % The full axiom set (Ax5.1-5.11, A1-A3, B1-B3) is satisfiable.
 % % Minimal model: one perm rule, one agent pair, one action, one target.
@@ -18,7 +18,7 @@
 % @prefix drk:    <http://w3id.org/drk/ontology/> .
 % @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 % @prefix schema: <https://schema.org/> .
-% <drk:policy-theater-read> a odrl:Agreement ;
+% drk:policy-theater-read> a odrl:Agreement ;
 % ... (12 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
@@ -137,13 +137,14 @@ fof(ax_cross_relator, axiom,
       ( ( permission(L) & bearer(L,X) & cnt(L,A,T)
         & duty(D)       & bearer(D,X) & cnt(D,rfr(A),T) )
      => $false )).
-fof(ax_conflict, lemma,
+fof(ax_conflict, axiom,
     ! [Rho, L, D, X, A, T] :
       ( ( part_of(L,Rho) & part_of(D,Rho)
         & permission(L) & duty(D)
         & bearer(L,X) & bearer(D,X)
         & cnt(L,A,T)  & cnt(D,rfr(A),T) )
      => $false )).
+
 fof(ax_disability_block, axiom,
     ! [F, X, Y, A, T] :
       ( ( proh(F) & aee(F,X) & aer(F,Y) & act(F,A) & tgt(F,T) )

@@ -5,7 +5,7 @@
 % Status   : Theorem
 % Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
 % Policy   : Policies/GRND015-unique-founding-policy.ttl
-% Generated: 2026-03-27 by gen_foundation_problems.py v1.5
+% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
 %
 % % founds(e1,rho1,p1) and founds(e1,rho2,p1) => rho1 = rho2.
 % % UFO axiom a77 — relator individuated by rule-event pair.

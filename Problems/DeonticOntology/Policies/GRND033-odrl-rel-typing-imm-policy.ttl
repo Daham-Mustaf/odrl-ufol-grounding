@@ -2,8 +2,8 @@
 # File     : GRND033-odrl-rel-typing-imm-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Ax5.7 imm: founds_imm + perm => odrl_rel
-# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-03-27 by gen_foundation_problems.py
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-05-29 by gen_foundation_problems.py
 # Links    : Entailment/GRND033-odrl-rel-typing-imm-1.p
 #            Entailment/GRND033-odrl-rel-typing-imm-1.smt2
 # ------------------------------------------------------------------------------

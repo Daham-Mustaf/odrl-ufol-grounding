@@ -2,8 +2,8 @@
 # File     : GRND006-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Correlativity: Permission implies unique NoRight in relator
-# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-03-27 by gen_foundation_problems.py
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-05-29 by gen_foundation_problems.py
 # Links    : Entailment/GRND006-1.p
 #            Entailment/GRND006-1.smt2
 # ------------------------------------------------------------------------------
@@ -18,10 +18,10 @@
         odrl:assigner <drk:BerlinerEnsemble> ;
         odrl:action   odrl:use ;
         odrl:target   <drk:PlayProductionMetadataDataset> ] .
-<drk:PlayProductionMetadataDataset>   a dcat:Dataset ;
+drk:PlayProductionMetadataDataset   a dcat:Dataset ;
     schema:name "Berliner Ensemble Play Production Metadata" .
-<drk:BerlinerEnsemble>                a schema:Organization .
-<drk:UniversitaetsbibliothekMuenchen> a schema:Organization .
+drk:BerlinerEnsemble               a schema:Organization .
+drk:UniversitaetsbibliothekMuenchen a schema:Organization .
 # Permission(Bibliothek) entails unique NoRight(Ensemble) in relator.
 # Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 #   ensemble=drk:BerlinerEnsemble, use_act=odrl:use,

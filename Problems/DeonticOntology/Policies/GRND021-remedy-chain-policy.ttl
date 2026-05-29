@@ -2,8 +2,8 @@
 # File     : GRND021-remedy-chain-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Full remedy chain: violation triggers Power-licensed institutional act
-# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-03-27 by gen_foundation_problems.py
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-05-29 by gen_foundation_problems.py
 # Links    : Discriminating/GRND021-remedy-chain-1.p
 #            Discriminating/GRND021-remedy-chain-1.smt2
 # ------------------------------------------------------------------------------

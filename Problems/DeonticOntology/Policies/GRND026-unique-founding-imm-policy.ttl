@@ -2,8 +2,8 @@
 # File     : GRND026-unique-founding-imm-policy.ttl
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Unique founding imm: same event+rule founds at most one immunity relator
-# Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-03-27 by gen_foundation_problems.py
+# Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
+# Generated: 2026-05-29 by gen_foundation_problems.py
 # Links    : Entailment/GRND026-unique-founding-imm-1.p
 #            Entailment/GRND026-unique-founding-imm-1.smt2
 # ------------------------------------------------------------------------------
