@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND030-b3-subjection-about-event-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : B3 alone: Subjection in remedy relator concerns founding event
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : B3 alone: Subjection in remedy relator concerns founding event
 % Status   : Theorem
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND030-b3-subjection-about-event-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND030-b3-subjection-about-event-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % Subjection(s) with cnt(s,decl(some_action),some_target) partOf rho_R,
 % % and founds_rem(e1,rho_R,f1) => about_event(s, e1).

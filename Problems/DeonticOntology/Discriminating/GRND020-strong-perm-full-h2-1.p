@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND020-strong-perm-full-h2-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Strong permission full H2: Disability blocks same assigner prohibition
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Strong permission full H2: Disability blocks same assigner prohibition
 % Status   : Unsatisfiable
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND020-strong-perm-full-h2-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND020-strong-perm-full-h2-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % perm(p1) + strong(p1) + activates(e1,p1).
 % % Ax5.2 (founds_imm): creates rho_I with Immunity(bibliothek,read,museum_api)

@@ -3,7 +3,7 @@
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Ax5.7 rem: founds_rem + proh => odrl_rel
 # Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-05-29 by gen_foundation_problems.py
+# Generated: 2026-06-12 by gen_foundation_problems.py
 # Links    : Entailment/GRND032-odrl-rel-typing-rem-1.p
 #            Entailment/GRND032-odrl-rel-typing-rem-1.smt2
 # ------------------------------------------------------------------------------

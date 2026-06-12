@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND035-dual-rule-remedy-chain-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Dual-rule: Power in remedy relator concerns founding event (B2)
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Dual-rule: Power in remedy relator concerns founding event (B2)
 % Status   : Theorem
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND035-dual-rule-remedy-chain-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND035-dual-rule-remedy-chain-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % Two prohibitions with distinct remedies from two DRK providers:
 % %   pol1: ensemble prohibits bibliothek from distributing theater_ds

@@ -1,13 +1,13 @@
 %--------------------------------------------------------------------------
 % File     : GRND000-0.ax
-% Domain   : Deontic Ontology / ODRL Grounding
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding
 % Problem  : Signature — sorts, predicates, rfr/decl functions
 % Version  : 1.5
 % English  : FOF signature. Include in ALL DeonticOntology .p files via:
 %              include('Axioms/Layer0-Signature/GRND000-0.ax').
 %
-% Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Generated: 2026-05-29 by gen_layer0_signature.py
+% Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
+% Generated: 2026-06-12 by gen_layer0_signature.py
 %
 % Sorts (unary guard predicates — FOF has no native sorts):
 %   agent, action, target, rule, position, legal_relator, event,

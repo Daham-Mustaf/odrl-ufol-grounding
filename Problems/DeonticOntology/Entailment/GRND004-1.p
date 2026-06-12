@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND004-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Prohibition with remedy creates Power and Subjection
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Prohibition with remedy creates Power and Subjection
 % Status   : Theorem
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND004-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND004-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % proh(f1) + has_rem(f1) + activates(e1,f1).
 % % Ax5.4 existentially founds rho_R via founds_rem.

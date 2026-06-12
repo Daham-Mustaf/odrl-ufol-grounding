@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND024-obl-proh-coexist-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Obligation + Prohibition coexist: Duty(a) vs Duty(rfr(a)) distinct
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Obligation + Prohibition coexist: Duty(a) vs Duty(rfr(a)) distinct
 % Status   : Satisfiable
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND024-obl-proh-coexist-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND024-obl-proh-coexist-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % obl(obl1) activated at e1: creates Duty(bibliothek, read, theater_ds).
 % % proh(f1)  activated at e2: creates Duty(bibliothek, rfr(read), theater_ds).

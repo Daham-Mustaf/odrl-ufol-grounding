@@ -3,7 +3,7 @@
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Dual-rule unique rem: same event+rule founds at most one remedy relator
 # Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-05-29 by gen_foundation_problems.py
+# Generated: 2026-06-12 by gen_foundation_problems.py
 # Links    : Discriminating/GRND036-dual-rule-unique-rem-1.p
 #            Discriminating/GRND036-dual-rule-unique-rem-1.smt2
 # ------------------------------------------------------------------------------

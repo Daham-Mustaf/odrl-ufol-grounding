@@ -3,7 +3,7 @@
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Strong permission full H2: Disability blocks same assigner prohibition
 # Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-05-29 by gen_foundation_problems.py
+# Generated: 2026-06-12 by gen_foundation_problems.py
 # Links    : Discriminating/GRND020-strong-perm-full-h2-1.p
 #            Discriminating/GRND020-strong-perm-full-h2-1.smt2
 # ------------------------------------------------------------------------------

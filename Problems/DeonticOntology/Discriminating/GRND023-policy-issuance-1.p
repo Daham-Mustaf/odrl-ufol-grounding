@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND023-policy-issuance-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Policy issuance: issue/1 injectivity (distinct rules => distinct acts)
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Policy issuance: issue/1 injectivity (distinct rules => distinct acts)
 % Status   : Theorem
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND023-policy-issuance-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND023-policy-issuance-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % Two distinct rules pi1 != pi2.
 % % Layer0 issue_injective: issue(A)=issue(B) => A=B.

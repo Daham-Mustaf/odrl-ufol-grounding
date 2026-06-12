@@ -3,7 +3,7 @@
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : B2+B3: Power and Subjection in relator concern founding event
 # Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-05-29 by gen_foundation_problems.py
+# Generated: 2026-06-12 by gen_foundation_problems.py
 # Links    : Entailment/GRND018-about-event-1.p
 #            Entailment/GRND018-about-event-1.smt2
 # ------------------------------------------------------------------------------

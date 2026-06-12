@@ -23,8 +23,8 @@ from pathlib import Path
 from datetime import date
 
 META = {
-    "domain":  "Deontic Ontology / ODRL Grounding",
-    "source":  "[Anonymous] et al., What Does ODRL Mean? FOIS 2026",
+    "domain":  "Foundational Ontology (UFO-L) / Deontic ODRL Grounding",
+    "source":  "Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)",
     "version": "1.5",
 }
 

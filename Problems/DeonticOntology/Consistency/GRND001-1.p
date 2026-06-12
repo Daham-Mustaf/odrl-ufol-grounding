@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND001-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Full axiom set consistency
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Full axiom set consistency
 % Status   : Satisfiable
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND001-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND001-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % The full axiom set (Ax5.1-5.11, A1-A3, B1-B3) is satisfiable.
 % % Minimal model: one perm rule, one agent pair, one action, one target.

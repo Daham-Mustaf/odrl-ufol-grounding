@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND019-two-policy-conflict-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Two policies conflict: competing Rights from distinct assigners
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Two policies conflict: competing Rights from distinct assigners
 % Status   : Unsatisfiable
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND019-two-policy-conflict-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND019-two-policy-conflict-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % Two prohibitions over the same (bibliothek, read, theater_ds):
 % %   f1: assigner museen, activates at e1 => Duty(bibliothek,rfr(read),theater_ds)

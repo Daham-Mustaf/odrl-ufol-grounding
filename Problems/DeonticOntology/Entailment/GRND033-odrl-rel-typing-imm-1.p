@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND033-odrl-rel-typing-imm-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Ax5.7 imm: founds_imm + perm => odrl_rel
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Ax5.7 imm: founds_imm + perm => odrl_rel
 % Status   : Theorem
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND033-odrl-rel-typing-imm-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND033-odrl-rel-typing-imm-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % founds_imm(e1,rho1,p1) & perm(p1) => odrl_rel(rho1).
 % % Ax5.7 immunity variant tested in isolation.

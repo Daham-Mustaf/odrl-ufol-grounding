@@ -3,9 +3,9 @@
 ; Domain   : Deontic Ontology / ODRL Grounding
 ; Problem  : Correlativity: Immunity implies unique Disability in relator
 ; Status   : unsat
-; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
+; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
 ; Policy   : Policies/GRND014-corr-immunity-policy.ttl
-; Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+; Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 ;
 ; odrl_rel(rho1), Immunity(im) partOf rho1 => exists unique db. Disability(db) partOf rho1.
 ;
@@ -21,7 +21,7 @@
 ; === Source: Axioms/Layer0-Signature/GRND000-0.smt2 ===
 ; --------------------------------------------------------------------------
 ; File     : GRND000-0.smt2
-; Domain   : Deontic Ontology / ODRL Grounding
+; Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding
 ; Problem  : Signature preamble — sorts, functions, rfr/decl axioms
 ; Version  : 1.5
 ; English  : SMT-LIB preamble embedded verbatim into every .smt2 file.
@@ -30,8 +30,8 @@
 ;              from gen_layer0_signature import generate_smt2 as _gen_smt2
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
-; Source   : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-; Generated: 2026-05-29 by gen_layer0_signature.py
+; Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
+; Generated: 2026-06-12 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.
@@ -47,7 +47,7 @@
 ;   - Issue 3: founds-rem and founds-imm in SMT2_RELATOR_PREDICATES.
 ; --------------------------------------------------------------------------
 (set-logic UF)
-(set-info :source |[Anonymous] et al., What Does ODRL Mean? FOIS 2026|)
+(set-info :source |Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)|)
 (set-info :status unknown)
 
 ; --------------------------------------------------------------------------

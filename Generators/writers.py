@@ -94,10 +94,10 @@ def write_fof_problem(p: dict, out_dir: Path) -> Path:
     lines = [
         "%--------------------------------------------------------------------------",
         f"% File     : {p['id']}-1.p",
-        "% Domain   : Deontic Ontology / ODRL Grounding",
+        "% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding"
         f"% Problem  : {p['name']}",
         f"% Status   : {p['status_fof']}",
-        "% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026",
+        "% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)"
         f"% Policy   : Policies/{p['id']}-policy.ttl",
         f"% Generated: {date.today().isoformat()} by {GENERATOR}",
         "%",
@@ -159,7 +159,7 @@ def write_smt2_problem(p: dict, out_dir: Path) -> Path:
         "; Domain   : Deontic Ontology / ODRL Grounding",
         f"; Problem  : {p['name']}",
         f"; Status   : {p['status_smt']}",
-        "; Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026",
+        "; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)",
         f"; Policy   : Policies/{p['id']}-policy.ttl",
         f"; Generated: {date.today().isoformat()} by {GENERATOR}",
         ";",

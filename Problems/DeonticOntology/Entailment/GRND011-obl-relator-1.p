@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND011-obl-relator-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Obligation creates Duty and Right
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Obligation creates Duty and Right
 % Status   : Theorem
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND011-obl-relator-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND011-obl-relator-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % obl(obl1) activated by e1 entails Duty(bibliothek,read,play_ds)
 % % and Right(ensemble,read,play_ds).

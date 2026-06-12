@@ -1,11 +1,9 @@
 %--------------------------------------------------------------------------
 % File     : GRND016-conflict-relator-1.p
-% Domain   : Deontic Ontology / ODRL Grounding
-% Problem  : Conflict detection: Permission and Duty in same relator
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Conflict detection: Permission and Duty in same relator
 % Status   : Unsatisfiable
-% Refs     : [Anonymous] et al., What Does ODRL Mean? FOIS 2026
-% Policy   : Policies/GRND016-conflict-relator-policy.ttl
-% Generated: 2026-05-29 by gen_foundation_problems.py v1.5
+% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND016-conflict-relator-policy.ttl
+% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
 %
 % % Permission(l) and Duty(d) both partOf rho1, same bearer, same content.
 % % Corollary ax:conflict derives False (within-relator check).
