@@ -1,0 +1,304 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix odrl-l: <https://w3id.org/odrl-legal/> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix vann:   <http://purl.org/vocab/vann/> .
+
+odrl-l: a owl:Ontology ;
+    dct:title       "ODRL Deontic-Legal Profile"@en ;
+    dct:description """OWL approximation of the UFO-L grounding of ODRL 2.2.
+        Surfaces 8 legal positions (Table 1) from the 2 positions implicit
+        in ODRL evaluators. 15 classes, 8 properties.
+        Ternary predicates founds/3 and cnt/3 are approximated as binary
+        OWL object properties; cnt/3 is split into odrl-l:normContent
+        (action argument) and odrl:target (target argument); rfr(a)
+        forbearances are not OWL-representable and are handled in the
+        TPTP/SMT-LIB benchmark encodings.
+        Ax5.9 (Correlativity) and Ax5.10 (Normative Position
+        Incompatibility) require qualified cardinality or full FOL
+        and are not encoded in this OWL layer; see the TPTP/SMT-LIB
+        benchmark encodings."""@en ;
+    vann:preferredNamespacePrefix "odrl-l" ;
+    vann:preferredNamespaceUri    "https://w3id.org/odrl-legal/" ;
+    dct:creator     "Daham M. Mustafa" ,
+                    "Christoph Lange" ,
+                    "Giancarlo Guizzardi" ,
+                    "Diego Collarana" ,
+                    "Christoph Quix" ,
+                    "Stefan Decker" ;
+    dct:bibliographicCitation """Daham M. Mustafa, Christoph Lange, Giancarlo Guizzardi, Diego Collarana, Christoph Quix, and Stefan Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L. In Proc. 16th Int. Conf. on Formal Ontology in Information Systems (FOIS 2026), Frontiers in Artificial Intelligence and Applications, IOS Press, 2026."""@en ;
+    dct:license     <https://creativecommons.org/licenses/by/4.0/> ;
+    dct:created     "2026-03-16"^^xsd:date ;
+    dct:modified    "2026-05-29"^^xsd:date ;
+    dct:issued      "2026"^^xsd:gYear ;
+    owl:versionInfo "1.0" ;
+    owl:versionIRI  <https://w3id.org/odrl-legal/1.0> ;
+    rdfs:seeAlso    <https://github.com/Daham-Mustaf/odrl-ufol-grounding> ;
+    owl:imports     <http://www.w3.org/ns/odrl/2/> .
+
+# ═══════════════════════════════════════════════════════════════
+# 1 abstract superclass  +  8 leaf position classes  =  9 classes
+# ═══════════════════════════════════════════════════════════════
+
+odrl-l:LegalPosition a owl:Class ;
+    rdfs:label   "LegalPosition" ;
+    rdfs:comment
+        "Abstract supertype of all 8 UFO-L legal position classes
+         (Fig. 5, Griffo et al. 2023). Corresponds to UFO Legal Moment:
+         an existentially dependent particular inhering in exactly one
+         bearer." .
+
+# Conduct level — Permission–NoRight relator (Ax5.1)
+odrl-l:Permission a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "Permission" ;
+    rdfs:comment
+        "Legal Entitlement. Bearer: assignee. Correlative: NoRight.
+         Source: Permission Relator--Basic (Ax5.1).
+         Distinct from odrl:Permission, which is a policy-graph rule node.
+         odrl-l:Permission is a legal moment instantiated at activation." .
+
+odrl-l:NoRight a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "NoRight" ;
+    rdfs:comment
+        "Legal Burden/Lack. Bearer: assigner. Correlative: Permission.
+         Source: Permission Relator--Basic (Ax5.1)." .
+
+# Conduct level — Right–Duty relator (Ax5.3 Prohibition; Ax5.5 Obligation)
+odrl-l:Duty a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "Duty" ;
+    rdfs:comment
+        "Legal Burden. Bearer: assignee. Correlative: Right.
+         Source: Prohibition Relator--Conduct (Ax5.3): Duty-to-Omit
+         rfr(a); Obligation Relator (Ax5.5): Duty-to-Act over a.
+         The position class is shared; the relator class distinguishes
+         the two cases (ProhibitionRelator vs ObligationRelator)." .
+
+odrl-l:Right a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "Right" ;
+    rdfs:comment
+        "Legal Entitlement. Bearer: assigner. Correlative: Duty.
+         Source: Prohibition Relator--Conduct (Ax5.3): Right-to-Omission;
+         Obligation Relator (Ax5.5): Right-to-Action." .
+
+# Competence level — Power–Subjection relator (Ax5.4)
+odrl-l:Power a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "Power" ;
+    rdfs:comment
+        "Legal Entitlement. Bearer: assigner. Correlative: Subjection.
+         Source: Prohibition Relator--Remedy (Ax5.4).
+         Constituted at activation, not at violation.
+         Content: decl(a) — the institutional act of declaring violation." .
+
+odrl-l:Subjection a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "Subjection" ;
+    rdfs:comment
+        "Legal Burden. Bearer: assignee. Correlative: Power.
+         Source: Prohibition Relator--Remedy (Ax5.4)." .
+
+# Competence level — Immunity–Disability relator (Ax5.2)
+odrl-l:Immunity a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "Immunity" ;
+    rdfs:comment
+        "Legal Entitlement. Bearer: assignee. Correlative: Disability.
+         Source: Permission Relator--Strong (Ax5.2).
+         Not exclusive to strong permission: can arise from any source
+         that constitutionally entrenches a position against revocation
+         (Griffo 2023)." .
+
+odrl-l:Disability a owl:Class ;
+    rdfs:subClassOf odrl-l:LegalPosition ;
+    rdfs:label   "Disability" ;
+    rdfs:comment
+        "Legal Burden/Lack. Bearer: assigner. Correlative: Immunity.
+         Source: Permission Relator--Strong (Ax5.2);
+         Disability Precludes Prohibition Creation (Ax5.10)." .
+
+# UFO moment-type disjointness (paper §3, Guizzardi2022-PORUUF)
+[ a owl:AllDisjointClasses ;
+    owl:members ( odrl-l:Permission  odrl-l:NoRight
+                  odrl-l:Duty        odrl-l:Right
+                  odrl-l:Power       odrl-l:Subjection
+                  odrl-l:Immunity    odrl-l:Disability ) ] .
+
+# ═══════════════════════════════════════════════════════════
+# 6 relator classes  (1 abstract root + 5 concrete)
+# ═══════════════════════════════════════════════════════════
+
+# Root — typed by ODRL Relator Typing (Ax5.7)
+odrl-l:ODRLRelator a owl:Class ;
+    rdfs:label   "ODRLRelator" ;
+    rdfs:comment
+        "Abstract root. Founded by activation of an ODRL rule.
+        Source: ODRL Relator Typing (Ax5.7).
+        Ax5.8 (Correlativity) and Ax5.9 (Normative Position
+        Incompatibility) are not encoded in this OWL layer;
+        see the TPTP/SMT-LIB benchmark encodings." .
+
+# rho_P: Permission + NoRight  (Ax5.1)
+odrl-l:PermissionRelator a owl:Class ;
+    rdfs:subClassOf odrl-l:ODRLRelator ;
+    rdfs:label   "PermissionRelator" ;
+    rdfs:comment
+        "Bundles Permission (assignee) + NoRight (assigner) over act a.
+         Founded via odrl-l:founds on an odrl:Permission rule (Ax5.1).
+         When odrl-l:stronglyPermitted is asserted, a SEPARATE
+         ImmunityRelator (rho_I) is also founded via odrl-l:foundsImm
+         at the same activation event; rho_P ≠ rho_I (Ax5.6)." .
+
+# rho_F: Duty-to-Omit + Right-to-Omission  (Ax5.3)
+odrl-l:ProhibitionRelator a owl:Class ;
+    rdfs:subClassOf odrl-l:ODRLRelator ;
+    rdfs:label   "ProhibitionRelator" ;
+    rdfs:comment
+        "Bundles Duty-to-Omit (assignee) + Right-to-Omission (assigner)
+         over rfr(a). Founded via odrl-l:founds on an odrl:Prohibition
+         rule (Ax5.3). When odrl-l:hasRemedy is asserted, a SEPARATE
+         RemedyRelator (rho_R) is also founded via odrl-l:foundsRem;
+         rho_F ≠ rho_R (Ax5.6)." .
+
+# rho_D: Duty-to-Act + Right-to-Action  (Ax5.5)
+odrl-l:ObligationRelator a owl:Class ;
+    rdfs:subClassOf odrl-l:ODRLRelator ;
+    rdfs:label   "ObligationRelator" ;
+    rdfs:comment
+        "Bundles Duty-to-Act (assignee) + Right-to-Action (assigner)
+         over act a. Founded via odrl-l:founds on an odrl:Duty rule
+         (Ax5.5). Corresponds to rho_D in Definition 3 of the paper." .
+
+# rho_I: Immunity + Disability  (Ax5.2)
+odrl-l:ImmunityRelator a owl:Class ;
+    rdfs:subClassOf odrl-l:ODRLRelator ;
+    rdfs:label   "ImmunityRelator" ;
+    rdfs:comment
+        "Bundles Immunity (assignee) + Disability (assigner).
+         Founded via odrl-l:foundsImm when odrl-l:stronglyPermitted
+         is asserted on an odrl:Permission rule (Ax5.2).
+         Distinct from PermissionRelator: rho_P ≠ rho_I (Ax5.6)." .
+
+# rho_R: Power + Subjection  (Ax5.4)
+odrl-l:RemedyRelator a owl:Class ;
+    rdfs:subClassOf odrl-l:ODRLRelator ;
+    rdfs:label   "RemedyRelator" ;
+    rdfs:comment
+        "Bundles Power (assigner, over decl(a)) + Subjection (assignee).
+         Founded via odrl-l:foundsRem when odrl-l:hasRemedy is asserted
+         on an odrl:Prohibition rule (Ax5.4).
+         Distinct from ProhibitionRelator: rho_F ≠ rho_R (Ax5.6).
+         Power is constituted at activation, not at violation." .
+
+[ a owl:AllDisjointClasses ;
+    owl:members ( odrl-l:PermissionRelator
+                  odrl-l:ProhibitionRelator
+                  odrl-l:ObligationRelator
+                  odrl-l:ImmunityRelator
+                  odrl-l:RemedyRelator ) ] .
+
+# ═══════════════════════════════════════
+# 8 properties
+# ═══════════════════════════════════════
+
+# (1) bearer
+odrl-l:bearer a owl:ObjectProperty ;
+    rdfs:domain odrl-l:LegalPosition ;
+    rdfs:range  odrl:Party ;
+    rdfs:label  "bearer" ;
+    rdfs:comment
+        "Legal position m inheres in agent x (bearer).
+         Approximates bearer/2 from the axioms." .
+
+# (2) partOf
+odrl-l:partOf a owl:ObjectProperty ;
+    rdfs:domain odrl-l:LegalPosition ;
+    rdfs:range  odrl-l:ODRLRelator ;
+    rdfs:label  "partOf" ;
+    rdfs:comment
+        "Moment m is a mereological part of relator rho.
+         Mediation is derived: rho mediates x and y iff it has
+         parts inhering in x and y respectively
+         (Guizzardi 2005 p.240). Approximates partOf/2." .
+
+odrl-l:founds a owl:ObjectProperty ;
+    rdfs:range  [ a owl:Class ;
+                  owl:unionOf ( odrl-l:PermissionRelator
+                                odrl-l:ProhibitionRelator
+                                odrl-l:ObligationRelator ) ] ;
+    rdfs:label  "founds" ;
+    rdfs:comment
+        "Approximates founds/3 (rule argument dropped; event argument
+         untyped — event classes are not encoded in this OWL layer).
+         Range: PermissionRelator ⊔ ProhibitionRelator ⊔ ObligationRelator.
+         Use odrl-l:foundsImm for ImmunityRelator and
+         odrl-l:foundsRem for RemedyRelator; distinct property IRIs
+         enforce relator distinctness at the assertional level." .
+
+# (4) foundsImm
+odrl-l:foundsImm a owl:ObjectProperty ;
+    rdfs:range  odrl-l:ImmunityRelator ;
+    rdfs:label  "foundsImm" ;
+    rdfs:comment
+        "Approximates founds_imm/3. Founds rho_I for a strongly-permitted
+         rule. Distinct property from odrl-l:founds ensures rho_P ≠ rho_I
+         at the assertional level (Ax5.6)." .
+
+# (5) foundsRem
+odrl-l:foundsRem a owl:ObjectProperty ;
+    rdfs:range  odrl-l:RemedyRelator ;
+    rdfs:label  "foundsRem" ;
+    rdfs:comment
+        "Approximates founds_rem/3. Founds rho_R for a prohibition
+         carrying a remedy. Distinct property from odrl-l:founds ensures
+         rho_F ≠ rho_R at the assertional level (Ax5.6)." .
+
+# (6) normContent
+odrl-l:normContent a owl:ObjectProperty ;
+    rdfs:domain odrl-l:LegalPosition ;
+    rdfs:range  odrl:Action ;
+    rdfs:label  "normContent" ;
+    rdfs:comment
+        "Binary projection of cnt(m,a,t): the action argument.
+         For Duty-to-Omit and Right-to-Omission the value is the
+         underlying act a; the forbearance character rfr(a) is not
+         OWL-representable and is captured only in the TPTP/SMT-LIB
+         encodings. The target argument reuses odrl:target from
+         ODRL core. Full cnt/3 semantics in benchmark encodings." .
+
+# (7) stronglyPermitted — ODRL 2.2 extension point †
+odrl-l:stronglyPermitted a owl:AnnotationProperty ;
+    rdfs:domain odrl:Permission ;
+    rdfs:label  "stronglyPermitted" ;
+    rdfs:comment
+        "ODRL 2.2 extension point (profile flag, Table 1 †).
+         Presence on an odrl:Permission rule signals that Ax5.2 applies:
+         a separate ImmunityRelator (rho_I) is founded via
+         odrl-l:foundsImm alongside the PermissionRelator (rho_P).
+         As an owl:AnnotationProperty this flag carries no OWL
+         entailment; founding of rho_I requires a rule engine or
+         SPARQL construct operating over the policy graph.
+         Immunity is not exclusive to this path (Griffo 2023)." .
+
+# (8) hasRemedy — ODRL 2.2 extension point †
+odrl-l:hasRemedy a owl:ObjectProperty ;
+    rdfs:subPropertyOf odrl:remedy ;
+    rdfs:domain        odrl:Prohibition ;
+    rdfs:range         odrl:Duty ;
+    rdfs:label         "hasRemedy" ;
+    rdfs:comment
+        "ODRL 2.2 extension point (profile flag, Table 1 †).
+         Declared rdfs:subPropertyOf odrl:remedy: asserting
+         odrl-l:hasRemedy also asserts the structural ODRL remedy link
+         (range odrl:Duty is consistent with odrl:remedy rdfs:range
+         odrl:Rule since odrl:Duty rdfs:subClassOf odrl:Rule).
+         Presence as a distinct sub-property signals that Ax5.4 applies:
+         a separate RemedyRelator (rho_R) is founded via
+         odrl-l:foundsRem at activation. Bridges FOL predicate
+         has_rem(f) to the OWL policy graph." .
