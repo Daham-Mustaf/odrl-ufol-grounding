@@ -140,7 +140,7 @@ odrl-l:ODRLRelator a owl:Class ;
     rdfs:comment
         "Abstract root. Founded by activation of an ODRL rule.
         Source: ODRL Relator Typing (Ax5.7).
-        Ax5.8 (Correlativity) and Ax5.9 (Normative Position
+        Ax5.9 (Correlativity) and Ax5.10 (Normative Position
         Incompatibility) are not encoded in this OWL layer;
         see the TPTP/SMT-LIB benchmark encodings." .
 
