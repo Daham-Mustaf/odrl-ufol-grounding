@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<!--
+  ODRL Legal Profile (odrl-l:) — ReSpec specification.
+  Place this at  docs/index.html  in the odrl-ufol-grounding repo
+  (it replaces the pyLODE-generated index.html as the human-facing page;
+  keep the machine serialization at docs/ontology/odrl-legal-profile.ttl).
+
+  Before publishing, check the few items flagged in HTML comments below:
+    - the profile NAME (currently "ODRL Legal Profile"; the TTL dct:title
+      still says "ODRL Deontic-Legal Profile" — pick one and make all three
+      of paper / README / TTL agree);
+    - the ODRL Formal Semantics URL and date;
+    - the Z3 version (sync with the README and the paper Evaluation);
+    - the JSON-LD alternate-format line (generate the file or remove the line).
+
+  The id="…" anchors on each term (e.g. id="Power", id="hasRemedy") make the
+  w3id term IRIs resolve to their definition: https://w3id.org/odrl-legal/Power
+  redirects to …/#Power and lands on the Power row.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ODRL Legal Profile (ODRL-L)</title>
+  <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+  <script class="remove">
+    var respecConfig = {
+      specStatus: "base",
+      shortName: "odrl-legal",
+      latestVersion: "https://w3id.org/odrl-legal/",
+      edDraftURI: "https://w3id.org/odrl-legal/",
+      editors: [
+        { name: "Daham M. Mustafa", company: "RWTH Aachen University / Fraunhofer FIT" }
+      ],
+      authors: [
+        { name: "Daham M. Mustafa", company: "RWTH Aachen University / Fraunhofer FIT" },
+        { name: "Christoph Lange", company: "Fraunhofer FIT" },
+        { name: "Giancarlo Guizzardi", company: "University of Twente" },
+        { name: "Diego Collarana", company: "Fraunhofer FIT" },
+        { name: "Christoph Quix", company: "University of Twente" },
+        { name: "Stefan Decker", company: "RWTH Aachen University / Fraunhofer FIT" }
+      ],
+      otherLinks: [{
+        key: "Related publication",
+        data: [
+          { value: "What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)", href: "https://github.com/Daham-Mustaf/odrl-ufol-grounding" }
+        ]
+      }],
+      github: "https://github.com/Daham-Mustaf/odrl-ufol-grounding",
+      license: "cc-by",
+      lint: { "check-license": false },
+      publishDate: "2026-06-17",
+      alternateFormats: [
+        { uri: "ontology/odrl-legal-profile.ttl", label: "Ontology (Turtle)" },
+        { uri: "ontology/odrl-legal-profile.jsonld", label: "Ontology (JSON-LD)" }
+        /* JSON-LD: generate it (e.g. riot --output=jsonld odrl-legal-profile.ttl)
+           or delete this line so the link does not 404. */
+      ],
+      localBiblio: {
+        "ODRL-MODEL":  { title: "ODRL Information Model 2.2", href: "https://www.w3.org/TR/odrl-model/", publisher: "W3C", date: "15 February 2018" },
+        "ODRL-VOCAB":  { title: "ODRL Vocabulary & Expression 2.2", href: "https://www.w3.org/TR/odrl-vocab/", publisher: "W3C", date: "15 February 2018" },
+        "ODRL-FS":     { title: "ODRL Formal Semantics", href: "https://w3c.github.io/odrl/formal-semantics/", publisher: "W3C ODRL Community Group (draft report)", date: "10 June 2026" },
+        "MOBILITYDCAT-AP": { title: "mobilityDCAT-AP", href: "https://w3id.org/mobilitydcat-ap/", publisher: "NAPCORE" },
+        "UFOL-PAPER":  { title: "What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L", href: "https://github.com/Daham-Mustaf/odrl-ufol-grounding", publisher: "Proc. 16th Int. Conf. on Formal Ontology in Information Systems (FOIS 2026), Frontiers in Artificial Intelligence and Applications, IOS Press", date: "2026" }
+      }
+    };
+  </script>
+</head>
+<body>
+
+<section id="abstract">
+  <p>
+    This document specifies the <strong>ODRL Legal Profile (ODRL-L)</strong>, an
+    <a href="https://www.w3.org/TR/odrl-model/">ODRL 2.2</a> profile that gives an
+    OWL vocabulary for the <em>normative positions</em> an ODRL policy brings into
+    existence when it is in force. An ODRL evaluator returns a verdict
+    (<code>active</code>, <code>violated</code>, <code>fulfilled</code>,
+    <code>not-set</code>) but says nothing about who may, must, or can do what, in
+    relation to whom, once a policy is active. The profile makes those positions
+    explicit by grounding ODRL in the foundational ontology of legal relations
+    UFO-L: each activated rule founds a <em>simple legal relator</em> bundling one
+    correlative pair of legal positions, one position for the assignee and the
+    matching correlative for the assigner.
+  </p>
+  <p>
+    The profile defines fifteen classes (one abstract position supertype, the eight
+    UFO-L leaf positions, one abstract relator root, and five concrete relator
+    classes) and eight properties. It surfaces the eight legal positions
+    (Permission, No&nbsp;Right, Duty, Right, Power, Subjection, Immunity, Disability)
+    from the two that are implicit in existing evaluators, adding in particular the
+    competence-level Power&ndash;Subjection authority to declare a violation. Two
+    extension points, <code>odrl-l:hasRemedy</code> and
+    <code>odrl-l:stronglyPermitted</code>, let policy authors signal competence-level
+    structure at authoring time. The profile reuses ODRL [[ODRL-MODEL]] [[ODRL-VOCAB]]
+    as its foundational vocabulary. It is an OWL approximation of a first-order
+    grounding whose full semantics, axioms, and proofs are given in the companion
+    paper [[UFOL-PAPER]] and mechanically verified with Isabelle/HOL, Vampire, E, and Z3.
+  </p>
+</section>
+
+<section id="sotd">
+  <p>
+    This document is a working draft that specifies the ODRL Legal Profile (ODRL-L).
+    It accompanies the paper <em>What Does ODRL Mean? A Cross-Level Ontological
+    Grounding of Permissions, Prohibitions, and Duties in UFO-L</em> [[UFOL-PAPER]].
+    It is not a standards-track document of any organisation. It follows the
+    structure and editorial conventions of mobilityDCAT-AP [[MOBILITYDCAT-AP]] so the
+    profiles can be read consistently.
+  </p>
+</section>
+
+<section id="introduction">
+  <h2>Introduction</h2>
+
+  <section id="context">
+    <h3>Context</h3>
+    <p>
+      The Open Digital Rights Language (ODRL) expresses permissions, prohibitions,
+      and duties over assets, and has been adopted by data-space initiatives as a
+      common language for usage and access policies. The ODRL Formal Semantics
+      [[ODRL-FS]] specifies an <em>ODRL Evaluator</em>, a component that decides which
+      rules are active and which actions are permitted, prohibited, fulfilled, or
+      violated. Its output is a verdict.
+    </p>
+    <p>
+      A verdict does not say what normative situation a policy creates, nor what
+      authority structures that situation presupposes. Consider an events portal,
+      <code>:KulturPortal</code>, that obtains the same theatre showtimes from two
+      providers, <code>:BerlinerEnsemble</code> and <code>:DeutschesTheater</code>,
+      each under an <code>odrl:Agreement</code> that prohibits redistribution and
+      attaches a remedy. When the portal redistributes, the evaluator returns
+      <code>violated</code> for both policies but cannot say by whose authority either
+      remedy is enforceable: the policy graph records the remedy assignees, but it
+      has no term for the provider's Power to declare the violation, nor for the
+      provider's correlative Right to demand omission. Those normative positions are
+      entailed by the policy yet absent from both the evaluator and the graph.
+    </p>
+  </section>
+
+  <section id="scope">
+    <h3>Scope and approach</h3>
+    <p>
+      The profile grounds the three ODRL constructs that generate normative positions
+      between parties, Permission, Prohibition, and Duty (Asset and Party are
+      structural relata; Constraint is an activation condition that creates no
+      position). Each activated rule is mapped to a UFO-L simple legal relator that
+      bundles exactly one correlative pair of legal positions over the same content
+      (an action type and a target). Positions are partitioned into two levels:
+      the <em>conduct level</em> governs what agents may, must, or must not do
+      (Permission&ndash;No&nbsp;Right, Right&ndash;Duty); the <em>competence level</em>
+      governs the authority to bring positions into or out of existence through
+      institutional acts (Power&ndash;Subjection, Immunity&ndash;Disability).
+    </p>
+    <p>
+      The profile governs the <em>vocabulary</em> (position classes, relator classes,
+      and the properties that relate them) and provides an OWL surface for authors to
+      assert competence-level structure. It does not redefine the ODRL
+      constraint-evaluation semantics, nor introduce new operators. Because OWL lacks
+      function symbols and is restricted to a decidable description-logic fragment,
+      the profile is a deliberate approximation of the first-order grounding; the
+      limits are stated in <a href="#owl-limits">§ OWL approximation limits</a>.
+    </p>
+  </section>
+
+  <section id="conformance">
+    <h3>Conformance criterion</h3>
+    <p>
+      A policy graph uses this profile conformantly when, for every legal position it
+      asserts, the position is an instance of one of the eight leaf classes, inheres
+      in a party through <code>odrl-l:bearer</code>, carries its content through
+      <code>odrl-l:normContent</code> (and <code>odrl:target</code>), and is a part
+      (through <code>odrl-l:partOf</code>) of a relator of the matching kind, with the
+      bearer assignment (assignee or assigner) and the correlative pairing as
+      documented in <a href="#positions">§ Legal positions</a> and
+      <a href="#relators">§ Relators</a>. The two extension points,
+      <code>odrl-l:hasRemedy</code> and <code>odrl-l:stronglyPermitted</code>, are
+      asserted on ODRL rule nodes as defined in <a href="#extension-points">§
+      Extension points</a>. The correlativity and incompatibility constraints
+      (Axioms&nbsp;5.9 and&nbsp;5.10 of [[UFOL-PAPER]]) are not enforceable in OWL and
+      are checked in the first-order encodings of the benchmark
+      (<a href="#verification">§ Verification</a>).
+    </p>
+  </section>
+</section>
+
+<section id="namespaces">
+  <h2>Namespaces and prefixes</h2>
+  <table class="simple">
+    <thead><tr><th>Prefix</th><th>Namespace IRI</th><th>Vocabulary</th></tr></thead>
+    <tbody>
+      <tr><td><code>odrl-l</code></td><td><code>https://w3id.org/odrl-legal/</code></td><td>ODRL Legal Profile (this document)</td></tr>
+      <tr><td><code>odrl</code></td><td><code>http://www.w3.org/ns/odrl/2/</code></td><td>ODRL 2.2</td></tr>
+      <tr><td><code>owl</code></td><td><code>http://www.w3.org/2002/07/owl#</code></td><td>OWL</td></tr>
+      <tr><td><code>rdfs</code></td><td><code>http://www.w3.org/2000/01/rdf-schema#</code></td><td>RDF Schema</td></tr>
+      <tr><td><code>dct</code></td><td><code>http://purl.org/dc/terms/</code></td><td>DCMI Terms</td></tr>
+      <tr><td><code>vann</code></td><td><code>http://purl.org/vocab/vann/</code></td><td>VANN (vocabulary annotation)</td></tr>
+      <tr><td><code>xsd</code></td><td><code>http://www.w3.org/2001/XMLSchema#</code></td><td>XML Schema datatypes</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="model">
+  <h2>Conceptual model</h2>
+  <p>
+    A <strong>legal position</strong> is a UFO-L legal moment: an existentially
+    dependent particular that inheres in exactly one bearer (an agent). Positions are
+    classified as <em>Legal Entitlements</em> (implying an advantage) or
+    <em>Legal Burdens/Lacks</em> (implying a constraint), and always come in
+    <em>correlative</em> pairs. A <strong>simple legal relator</strong> is the
+    mereological sum of exactly one such pair: one position inhering in the assignee
+    and the matching correlative inhering in the assigner. It captures a bilateral
+    normative bond as a single individual, founded by a unique activation event.
+  </p>
+  <p>
+    <code id="LegalPosition">odrl-l:LegalPosition</code> is the abstract supertype of
+    the eight leaf position classes. <code id="ODRLRelator">odrl-l:ODRLRelator</code>
+    is the abstract root of the five concrete relator classes; a relator is typed as
+    an <code>odrl-l:ODRLRelator</code> when an ODRL rule of the matching kind founds
+    it (Axiom&nbsp;5.7 of [[UFOL-PAPER]]). The eight leaf positions are pairwise
+    disjoint, as are the five concrete relator classes.
+  </p>
+  <p>
+    Each activated rule founds exactly one relator. A prohibition that carries a
+    remedy additionally founds a competence-level <em>remedy</em> relator at the same
+    event, and a strongly permitted permission additionally founds an <em>immunity</em>
+    relator; the distinct founding properties keep these separate relators apart
+    (Axiom&nbsp;5.6 of [[UFOL-PAPER]]).
+  </p>
+</section>
+
+<section id="positions">
+  <h2>Legal positions</h2>
+  <p>
+    The eight leaf classes, each a subclass of
+    <code>odrl-l:LegalPosition</code>. &ldquo;Bearer&rdquo; states which ODRL party
+    bears the position; &ldquo;Source&rdquo; gives the founding axiom of
+    [[UFOL-PAPER]].
+  </p>
+  <table class="simple">
+    <thead><tr><th>Class</th><th>Kind</th><th>Correlative</th><th>Bearer</th><th>Level</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td><code id="Permission">odrl-l:Permission</code></td><td>Entitlement</td><td>No&nbsp;Right</td><td>assignee</td><td>conduct</td><td>Ax&nbsp;5.1</td></tr>
+      <tr><td><code id="NoRight">odrl-l:NoRight</code></td><td>Burden/Lack</td><td>Permission</td><td>assigner</td><td>conduct</td><td>Ax&nbsp;5.1</td></tr>
+      <tr><td><code id="Duty">odrl-l:Duty</code></td><td>Burden</td><td>Right</td><td>assignee</td><td>conduct</td><td>Ax&nbsp;5.3 / 5.5</td></tr>
+      <tr><td><code id="Right">odrl-l:Right</code></td><td>Entitlement</td><td>Duty</td><td>assigner</td><td>conduct</td><td>Ax&nbsp;5.3 / 5.5</td></tr>
+      <tr><td><code id="Power">odrl-l:Power</code></td><td>Entitlement</td><td>Subjection</td><td>assigner</td><td>competence</td><td>Ax&nbsp;5.4</td></tr>
+      <tr><td><code id="Subjection">odrl-l:Subjection</code></td><td>Burden</td><td>Power</td><td>assignee</td><td>competence</td><td>Ax&nbsp;5.4</td></tr>
+      <tr><td><code id="Immunity">odrl-l:Immunity</code></td><td>Entitlement</td><td>Disability</td><td>assignee</td><td>competence</td><td>Ax&nbsp;5.2</td></tr>
+      <tr><td><code id="Disability">odrl-l:Disability</code></td><td>Burden/Lack</td><td>Immunity</td><td>assigner</td><td>competence</td><td>Ax&nbsp;5.2, 5.11</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Notes on content. The <code>odrl-l:Duty</code> and <code>odrl-l:Right</code>
+    arising from a <em>prohibition</em> are over the omission of the action (a Duty to
+    Omit and a Right to Omission), whereas those arising from an <em>obligation</em>
+    are over the action itself (a Duty to Act and a Right to Action); the relator
+    class disambiguates the two cases. The content of <code>odrl-l:Power</code> and
+    <code>odrl-l:Subjection</code> is the institutional act of declaring a violation.
+    The forbearance and declaration functions are not OWL-representable
+    (<a href="#owl-limits">§ OWL approximation limits</a>), so in this profile
+    <code>odrl-l:normContent</code> carries the underlying action.
+    <code>odrl-l:Immunity</code> is not exclusive to strong permission: it can arise
+    from any source that constitutionally entrenches a position against revocation.
+  </p>
+</section>
+
+<section id="relators">
+  <h2>Relators</h2>
+  <p>
+    The five concrete relator classes, each a subclass of
+    <code>odrl-l:ODRLRelator</code>. Each bundles the correlative pair shown, founded
+    by activation of the stated ODRL rule through the stated founding property.
+  </p>
+  <table class="simple">
+    <thead><tr><th>Class</th><th>Founded by</th><th>Founding property</th><th>Positions bundled</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code id="PermissionRelator">odrl-l:PermissionRelator</code></td>
+        <td><code>odrl:Permission</code></td>
+        <td><code>odrl-l:founds</code></td>
+        <td>Permission (assignee) + No&nbsp;Right (assigner)</td>
+        <td>Ax&nbsp;5.1</td>
+      </tr>
+      <tr>
+        <td><code id="ProhibitionRelator">odrl-l:ProhibitionRelator</code></td>
+        <td><code>odrl:Prohibition</code></td>
+        <td><code>odrl-l:founds</code></td>
+        <td>Duty to Omit (assignee) + Right to Omission (assigner)</td>
+        <td>Ax&nbsp;5.3</td>
+      </tr>
+      <tr>
+        <td><code id="ObligationRelator">odrl-l:ObligationRelator</code></td>
+        <td><code>odrl:Duty</code></td>
+        <td><code>odrl-l:founds</code></td>
+        <td>Duty to Act (assignee) + Right to Action (assigner)</td>
+        <td>Ax&nbsp;5.5</td>
+      </tr>
+      <tr>
+        <td><code id="ImmunityRelator">odrl-l:ImmunityRelator</code></td>
+        <td><code>odrl:Permission</code> with <code>odrl-l:stronglyPermitted</code></td>
+        <td><code>odrl-l:foundsImm</code></td>
+        <td>Immunity (assignee) + Disability (assigner)</td>
+        <td>Ax&nbsp;5.2</td>
+      </tr>
+      <tr>
+        <td><code id="RemedyRelator">odrl-l:RemedyRelator</code></td>
+        <td><code>odrl:Prohibition</code> with <code>odrl-l:hasRemedy</code></td>
+        <td><code>odrl-l:foundsRem</code></td>
+        <td>Power (assigner) + Subjection (assignee)</td>
+        <td>Ax&nbsp;5.4</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    A strongly permitted permission founds both a
+    <code>odrl-l:PermissionRelator</code> and a separate
+    <code>odrl-l:ImmunityRelator</code> at the same event; a prohibition with a remedy
+    founds both a <code>odrl-l:ProhibitionRelator</code> and a separate
+    <code>odrl-l:RemedyRelator</code>. The distinct founding properties ensure these
+    are distinct individuals (Axiom&nbsp;5.6 of [[UFOL-PAPER]]).
+  </p>
+</section>
+
+<section id="properties">
+  <h2>Properties</h2>
+  <p>
+    Eight properties relate positions, relators, parties, and the rule-level
+    extension points. The last column names the first-order predicate of
+    [[UFOL-PAPER]] that the OWL property approximates.
+  </p>
+  <table class="simple">
+    <thead><tr><th>Property</th><th>Domain</th><th>Range</th><th>Approximates / role</th></tr></thead>
+    <tbody>
+      <tr><td><code id="bearer">odrl-l:bearer</code></td><td><code>odrl-l:LegalPosition</code></td><td><code>odrl:Party</code></td><td><code>bearer/2</code>: the position inheres in this party.</td></tr>
+      <tr><td><code id="partOf">odrl-l:partOf</code></td><td><code>odrl-l:LegalPosition</code></td><td><code>odrl-l:ODRLRelator</code></td><td><code>partOf/2</code>: the position is a mereological part of this relator (mediation is derived from <code>partOf</code> and <code>bearer</code>).</td></tr>
+      <tr><td><code id="normContent">odrl-l:normContent</code></td><td><code>odrl-l:LegalPosition</code></td><td><code>odrl:Action</code></td><td>Action argument of <code>cnt/3</code>; the target argument reuses <code>odrl:target</code>.</td></tr>
+      <tr><td><code id="founds">odrl-l:founds</code></td><td>activation event</td><td>Permission / Prohibition / Obligation relator</td><td><code>founds/3</code> for conduct relators (rule argument dropped; event untyped).</td></tr>
+      <tr><td><code id="foundsImm">odrl-l:foundsImm</code></td><td>activation event</td><td><code>odrl-l:ImmunityRelator</code></td><td><code>founds_imm/3</code>; distinct IRI keeps &rho;<sub>P</sub> &ne; &rho;<sub>I</sub>.</td></tr>
+      <tr><td><code id="foundsRem">odrl-l:foundsRem</code></td><td>activation event</td><td><code>odrl-l:RemedyRelator</code></td><td><code>founds_rem/3</code>; distinct IRI keeps &rho;<sub>F</sub> &ne; &rho;<sub>R</sub>.</td></tr>
+      <tr><td><code id="hasRemedy">odrl-l:hasRemedy</code> &dagger;</td><td><code>odrl:Prohibition</code></td><td><code>odrl:Duty</code></td><td>Extension point. <code>rdfs:subPropertyOf odrl:remedy</code>; bridges <code>has_rem(f)</code>: signals that Axiom&nbsp;5.4 applies and a <code>RemedyRelator</code> is founded.</td></tr>
+      <tr><td><code id="stronglyPermitted">odrl-l:stronglyPermitted</code> &dagger;</td><td><code>odrl:Permission</code></td><td>(annotation)</td><td>Extension point (annotation property, no OWL entailment). Signals that Axiom&nbsp;5.2 applies and an <code>ImmunityRelator</code> is founded.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="extension-points">
+  <h2>Extension points</h2>
+  <p>
+    The profile adds two terms (marked &dagger; above) that an author asserts on an
+    ODRL rule to make competence-level structure explicit at authoring time.
+  </p>
+  <p>
+    <code>odrl-l:hasRemedy</code> is a sub-property of <code>odrl:remedy</code>:
+    asserting it both records the structural ODRL remedy link and signals that
+    activating the prohibition founds a <code>odrl-l:RemedyRelator</code>, giving the
+    assigner the Power to declare a violation and the assignee the correlative
+    Subjection.
+  </p>
+  <p>
+    <code>odrl-l:stronglyPermitted</code> is an annotation property on an
+    <code>odrl:Permission</code>; its presence signals that the permission founds an
+    <code>odrl-l:ImmunityRelator</code> alongside the permission relator, so the
+    permission persists against a later prohibition. As an annotation property it
+    carries no OWL entailment: founding the immunity relator requires a rule engine or
+    a SPARQL construct over the policy graph.
+  </p>
+  <pre class="example" title="Asserting the strong-permission extension point (Turtle)">
+ex:p a odrl:Permission ;
+    odrl:assigner ex:Provider ;
+    odrl:assignee ex:Consumer ;
+    odrl:action   odrl:read ;
+    odrl:target   ex:Dataset ;
+    odrl-l:stronglyPermitted true .
+  </pre>
+</section>
+
+<section id="formalism">
+  <h2>Formal semantics</h2>
+  <p>
+    This section summarises the grounding; the full development, axioms, and proofs
+    are in the companion paper [[UFOL-PAPER]].
+  </p>
+  <section id="f-relators">
+    <h3>Rules as simple legal relators</h3>
+    <p>
+      Each activated ODRL rule founds exactly one simple legal relator that bundles
+      one correlative pair of positions, one for the assignee and the matching
+      correlative for the assigner, over the same action and target. This is the
+      minimal adequate grounding: a single rule creates exactly one pair, and a simple
+      legal relator bundles exactly one pair.
+    </p>
+  </section>
+  <section id="f-crosslevel">
+    <h3>The Cross-Level Design Principle</h3>
+    <p>
+      A norm is <em>violable</em> if the regulated action remains performable despite
+      the norm, and <em>consequential</em> if violation activates a reparative
+      position. The central result of [[UFOL-PAPER]] is that any norm that is both
+      violable and consequential has no adequate characterisation using conduct-level
+      positions alone: grounding the step from violation to remedy requires a
+      competence-level Power&ndash;Subjection pair. ODRL prohibition is
+      <em>sanctioned</em> (the prohibited action is performable and its performance
+      reaches <code>violated</code>), and a remedy is a consequence of violation by
+      definition, so any complete grounding of ODRL requires competence-level
+      positions. This is why the profile adds Power, Subjection, Immunity, and
+      Disability to the conduct-level positions an evaluator already implies.
+    </p>
+  </section>
+  <section id="f-coverage">
+    <h3>Soundness and incompleteness of the evaluator</h3>
+    <p>
+      Mapped onto the profile, an ODRL evaluator is <em>sound</em> but not
+      <em>complete</em>: a permit verdict entails a Permission, a prohibition entails a
+      Duty to Omit, and a prohibition with a remedy entails a Power, but the evaluator
+      reports none of the four entailed correlatives (No&nbsp;Right, Right to Omission,
+      Immunity, Disability). The profile makes all eight explicit.
+    </p>
+  </section>
+</section>
+
+<section id="owl-limits">
+  <h2>OWL approximation limits</h2>
+  <p>
+    The profile is an OWL approximation of the first-order grounding, with three
+    limits, all stemming from OWL's lack of function symbols and its decidable
+    description-logic fragment.
+  </p>
+  <ul>
+    <li>
+      <strong>Forbearance content is not representable.</strong> There is no OWL term
+      for the omission of an action as content, so a Duty to Omit and a Right to
+      Omission carry the underlying action through <code>odrl-l:normContent</code>;
+      the forbearance character is captured only in the first-order encodings.
+    </li>
+    <li>
+      <strong><code>stronglyPermitted</code> carries no entailment.</strong> It is an
+      annotation flag: founding the immunity relator (Axiom&nbsp;5.2) is a rule OWL
+      cannot derive, so it requires a rule engine or a SPARQL construct.
+    </li>
+    <li>
+      <strong>Correlativity and incompatibility require full first-order logic.</strong>
+      Axiom&nbsp;5.9 (Correlativity, a unique-existence biconditional over shared
+      content) and Axiom&nbsp;5.10 (Normative Position Incompatibility, a contradiction
+      over forbearance-related content) are not encoded in this OWL layer and are
+      checked in the benchmark.
+    </li>
+  </ul>
+  <p>
+    The ternary predicates <code>founds/3</code> and <code>cnt/3</code> are likewise
+    approximated as binary OWL object properties; <code>cnt/3</code> is split into
+    <code>odrl-l:normContent</code> (action) and <code>odrl:target</code> (target).
+  </p>
+</section>
+
+<section id="example">
+  <h2>Example</h2>
+  <p>
+    The Berliner Ensemble agreement of the introduction. The author writes
+    <code>odrl-l:hasRemedy</code> in place of plain <code>odrl:remedy</code>, which
+    signals that activation founds the competence relator that carries the
+    violation-declaration authority the bare ODRL graph leaves implicit.
+  </p>
+  <pre class="example" title="Authoring with the remedy extension point (Turtle)">
+ex:BE-Agreement a odrl:Agreement ;
+    odrl:prohibition [
+        odrl:assigner ex:BerlinerEnsemble ;
+        odrl:assignee ex:KulturPortal ;
+        odrl:action   odrl:distribute ;
+        odrl:target   ex:BE-Showtimes ;
+        odrl-l:hasRemedy [            # signals Ax 5.4: founds a RemedyRelator
+            a             odrl:Duty ;
+            odrl:action   odrl:compensate ;
+            odrl:assignee ex:BerlinerEnsemble
+        ]
+    ] .
+  </pre>
+  <p>
+    Activating this prohibition founds two relators at one event: a
+    <code>odrl-l:ProhibitionRelator</code> (Duty to Omit for
+    <code>:KulturPortal</code>, Right to Omission for <code>:BerlinerEnsemble</code>)
+    and, because of <code>odrl-l:hasRemedy</code>, a
+    <code>odrl-l:RemedyRelator</code> giving <code>:BerlinerEnsemble</code> the Power
+    to declare a violation and <code>:KulturPortal</code> the correlative Subjection.
+    Materialised with the profile's properties, the remedy relator is:
+  </p>
+  <pre class="example" title="The instantiated competence relator (Turtle)">
+ex:BE-Agreement-rhoR a odrl-l:RemedyRelator .
+
+ex:BE-power a odrl-l:Power ;
+    odrl-l:bearer      ex:BerlinerEnsemble ;
+    odrl-l:normContent odrl:distribute ;     # content is decl(distribute); see OWL limits
+    odrl-l:partOf      ex:BE-Agreement-rhoR .
+
+ex:BE-subjection a odrl-l:Subjection ;
+    odrl-l:bearer      ex:KulturPortal ;
+    odrl-l:normContent odrl:distribute ;
+    odrl-l:partOf      ex:BE-Agreement-rhoR .
+  </pre>
+  <p>
+    <code>:DeutschesTheater</code>'s agreement founds its own remedy relator, so the
+    two providers hold distinct Powers. Which provider may demand which remedy is then
+    fixed by the model rather than left to the implementation.
+  </p>
+</section>
+
+<section id="verification">
+  <h2>Verification</h2>
+  <p>
+    The first-order grounding the profile approximates is verified by a reproducible
+    benchmark published with the paper's artefacts [[UFOL-PAPER]]. The benchmark
+    contains 39 problems, each emitted as a TPTP/FOF file, an SMT-LIB&nbsp;2 file, and
+    a Turtle policy grounded in data-space entities, and checked across three
+    independent provers plus an Isabelle/HOL mechanisation.
+  </p>
+  <table class="simple">
+    <thead><tr><th>System</th><th>Version</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>Vampire</td><td>5.0.0</td><td>39 / 39</td></tr>
+      <!-- sync this Z3 version with the README and the paper's Evaluation section -->
+      <tr><td>Z3</td><td>4.15.4</td><td>39 / 39</td></tr>
+      <tr><td>E</td><td>3.2.5</td><td>36 / 36 (skips the 3 satisfiability problems)</td></tr>
+      <tr><td>Isabelle/HOL</td><td>2025</td><td>11 axioms + 23 lemmas, all discharged</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Entailment problems confirm the axioms are sufficient for each claimed position;
+    discriminating problems confirm they are not too strong, witnessing the
+    ontological distinctions an evaluator cannot express (open- vs. closed-world
+    permission, sanctioned vs. regimented prohibition, weak vs. strong permission, and
+    the full remedy chain). Methodology, predicate signatures, and prover-mode policy
+    are documented with the artefacts. [[UFOL-PAPER]]
+  </p>
+</section>
+
+</body>
+</html>

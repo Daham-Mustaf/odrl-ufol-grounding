@@ -48,7 +48,7 @@ uv run run_grnd_validation.py --dualrule --timeout 30 \
 
 ## Isabelle/HOL
 ```bash
-isabelle build -D Isabelle/
+isabelle build -D odrl_isabelle_formalization/
 # Expected: Finished ODRLDeonticOntology in ~8s
 ```
 
