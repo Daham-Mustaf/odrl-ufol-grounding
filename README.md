@@ -1,5 +1,11 @@
 # ODRL Grounding in UFO-L
 
+[![E 3.3.2](https://img.shields.io/badge/E-3.3.2-1f6feb)](https://github.com/eprover/eprover)
+[![Vampire 5.0.1](https://img.shields.io/badge/Vampire-5.0.1-1f6feb)](https://github.com/vprover/vampire)
+[![Z3 4.8.12](https://img.shields.io/badge/Z3-4.8.12-1f6feb)](https://github.com/Z3Prover/z3)
+[![cvc5 1.3.4](https://img.shields.io/badge/cvc5-1.3.4-1f6feb)](https://github.com/cvc5/cvc5)
+
+
 Mechanized verification benchmark and OWL profile for the paper:
 **"What Does ODRL Mean? A Cross-Level Ontological Grounding of
 Permissions, Prohibitions, and Duties in UFO-L"**
