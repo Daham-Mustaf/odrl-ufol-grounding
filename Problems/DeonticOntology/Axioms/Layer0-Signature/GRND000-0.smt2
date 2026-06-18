@@ -10,7 +10,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
-; Generated: 2026-06-12 by gen_layer0_signature.py
+; Generated: 2026-06-18 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

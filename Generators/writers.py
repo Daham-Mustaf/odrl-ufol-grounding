@@ -106,10 +106,10 @@ def write_fof_problem(p: dict, out_dir: Path) -> Path:
         lines.append(f"% {line}")
 
     # TTL summary in header — truncated for Vampire --proof readability
-    if p.get("ttl"):
-        lines.append("%")
-        lines.append("% ODRL Policy (Turtle) — see Policies/ for full file:")
-        lines.extend(_ttl_header_lines(p["ttl"], "% "))
+    # if p.get("ttl"):
+    #     lines.append("%")
+    #     lines.append("% ODRL Policy (Turtle) — see Policies/ for full file:")
+    #     lines.extend(_ttl_header_lines(p["ttl"], "% "))
 
     lines += [
         "%--------------------------------------------------------------------------",
@@ -168,10 +168,10 @@ def write_smt2_problem(p: dict, out_dir: Path) -> Path:
         lines.append(f"; {_strip_fof_comment_prefix(line)}")
 
     # TTL summary in header — truncated for readability
-    if p.get("ttl"):
-        lines.append(";")
-        lines.append("; ODRL Policy (Turtle) — see Policies/ for full file:")
-        lines.extend(_ttl_header_lines(p["ttl"], "; "))
+    # if p.get("ttl"):
+    #     lines.append(";")
+    #     lines.append("; ODRL Policy (Turtle) — see Policies/ for full file:")
+    #     lines.extend(_ttl_header_lines(p["ttl"], "; "))
 
     skip_axioms = p.get("skip_smt2_axioms", False)
     lines += [

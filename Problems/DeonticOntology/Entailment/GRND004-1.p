@@ -3,7 +3,7 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Prohibition with remedy creates Power and Subjection
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND004-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % proh(f1) + has_rem(f1) + activates(e1,f1).
 % % Ax5.4 existentially founds rho_R via founds_rem.
@@ -12,14 +12,6 @@
 % % Abstract constants: marketplace=drk:MusicMarketplaceAG,
 % %   philharmonie=drk:PhilharmonieBerlin, distrib=odrl:distribute,
 % %   concert_ds=drk:ConcertRecordingDataset
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% @prefix schema: <https://schema.org/> .
-% drk:policy-concert-remedy a odrl:Agreement ;
-% ... (16 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

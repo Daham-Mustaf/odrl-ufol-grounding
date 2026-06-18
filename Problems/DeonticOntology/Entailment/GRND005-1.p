@@ -3,20 +3,12 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Permission-Duty conflict detection (single relator)
 % Status   : Unsatisfiable
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND005-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % Permission(l,bibliothek,read,theater_ds) and Duty(d,bibliothek,rfr(read),theater_ds)
 % % in same relator rho1. Corollary ax:conflict derives False.
 % % Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 % %   read=odrl:read, theater_ds=drk:TheaterShowtimeDataset
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% # Conflict witness — not a valid standalone policy.
-% # Ground instance asserts:
-% ... (6 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

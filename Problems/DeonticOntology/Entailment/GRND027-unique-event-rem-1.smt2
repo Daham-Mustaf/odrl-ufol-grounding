@@ -5,15 +5,10 @@
 ; Status   : unsat
 ; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
 ; Policy   : Policies/GRND027-unique-event-rem-policy.ttl
-; Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+; Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 ;
 ; founds_rem(e1,rho1,f1) and founds_rem(e2,rho1,f1) => e1 = e2.
 ; UFO uniqueness (event side) for remedy relator.
-;
-; ODRL Policy (Turtle) — see Policies/ for full file:
-; @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
-; @prefix drk:  <http://w3id.org/drk/ontology/> .
-; # A remedy relator is individuated by a unique founding event.
 ; --------------------------------------------------------------------------
 
 ; === Layer 0 + Layer 1 preamble (embedded — SMT-LIB has no include) ===
@@ -30,7 +25,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
-; Generated: 2026-06-12 by gen_layer0_signature.py
+; Generated: 2026-06-18 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

@@ -5,21 +5,13 @@
 ; Status   : unsat
 ; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
 ; Policy   : Policies/GRND009-immunity-policy.ttl
-; Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+; Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 ;
 ; H2 = {Permission, NoRight, Immunity, Disability}.
 ; museen attempts proh(f2). Ax5.10: Disability + proh => False.
 ; Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 ;   museen=drk:StaatlicheMuseenBerlin, read=odrl:read,
 ;   museum_api=drk:MuseumCollectionAPI
-;
-; ODRL Policy (Turtle) — see Policies/ for full file:
-; @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-; @prefix drk:    <http://w3id.org/drk/ontology/> .
-; @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-; @prefix schema: <https://schema.org/> .
-; drk:policy-strong a odrl:Agreement ;
-; ... (15 more lines — see Policies/ file)
 ; --------------------------------------------------------------------------
 
 ; === Layer 0 + Layer 1 preamble (embedded — SMT-LIB has no include) ===
@@ -36,7 +28,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
-; Generated: 2026-06-12 by gen_layer0_signature.py
+; Generated: 2026-06-18 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

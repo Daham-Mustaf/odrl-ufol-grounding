@@ -3,16 +3,9 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Correlativity: Immunity implies unique Disability in relator
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND014-corr-immunity-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % odrl_rel(rho1), Immunity(im) partOf rho1 => exists unique db. Disability(db) partOf rho1.
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% # Correlativity: every Immunity in an ODRL relator has a unique correlative Disability.
-% # Grounded in a strong-permission relator over drk:MuseumCollectionAPI.
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

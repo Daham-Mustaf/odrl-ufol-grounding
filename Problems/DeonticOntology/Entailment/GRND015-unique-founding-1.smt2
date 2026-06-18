@@ -5,16 +5,10 @@
 ; Status   : unsat
 ; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
 ; Policy   : Policies/GRND015-unique-founding-policy.ttl
-; Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+; Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 ;
 ; founds(e1,rho1,p1) and founds(e1,rho2,p1) => rho1 = rho2.
 ; UFO axiom a77 — relator individuated by rule-event pair.
-;
-; ODRL Policy (Turtle) — see Policies/ for full file:
-; @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-; @prefix drk:    <http://w3id.org/drk/ontology/> .
-; # Uniqueness: activating the same permission twice at the same event
-; # cannot produce two distinct relators.
 ; --------------------------------------------------------------------------
 
 ; === Layer 0 + Layer 1 preamble (embedded — SMT-LIB has no include) ===
@@ -31,7 +25,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
-; Generated: 2026-06-12 by gen_layer0_signature.py
+; Generated: 2026-06-18 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

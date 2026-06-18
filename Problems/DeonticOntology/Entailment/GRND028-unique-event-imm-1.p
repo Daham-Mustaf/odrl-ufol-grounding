@@ -3,15 +3,10 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Unique event imm: same relator+rule founded by at most one event
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND028-unique-event-imm-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % founds_imm(e1,rho1,p1) and founds_imm(e2,rho1,p1) => e1 = e2.
 % % UFO uniqueness (event side) for immunity relator.
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:  <http://w3id.org/drk/ontology/> .
-% # An immunity relator is individuated by a unique founding event.
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

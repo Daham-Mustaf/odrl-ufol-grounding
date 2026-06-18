@@ -3,21 +3,13 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Regimented prohibition: contradiction
 % Status   : Unsatisfiable
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND008-regimented-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % Regimented axiom: ~does when prohibited.
 % % Ground witness: does(marketplace,distrib,concert_ds). Contradiction.
 % % has_rem NOT asserted — regimented reading presupposes no remedy.
 % % Abstract constants: marketplace=drk:MusicMarketplaceAG,
 % %   distrib=odrl:distribute, concert_ds=drk:ConcertRecordingDataset
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% @prefix schema: <https://schema.org/> .
-% <drk:policy-regimented> a odrl:Agreement ;
-% ... (11 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

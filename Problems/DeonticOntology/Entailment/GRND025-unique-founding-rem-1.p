@@ -3,16 +3,10 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Unique founding rem: same event+rule founds at most one remedy relator
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND025-unique-founding-rem-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % founds_rem(e1,rho1,f1) and founds_rem(e1,rho2,f1) => rho1 = rho2.
 % % UFO uniqueness for remedy relator — mirrors GRND015 for founds_rem.
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:  <http://w3id.org/drk/ontology/> .
-% # Uniqueness: activating the same prohibition-with-remedy at the same event
-% # cannot produce two distinct remedy relators.
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

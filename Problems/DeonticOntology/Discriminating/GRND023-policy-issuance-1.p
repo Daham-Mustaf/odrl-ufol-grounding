@@ -3,7 +3,7 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Policy issuance: issue/1 injectivity (distinct rules => distinct acts)
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND023-policy-issuance-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % Two distinct rules pi1 != pi2.
 % % Layer0 issue_injective: issue(A)=issue(B) => A=B.
@@ -11,14 +11,6 @@
 % % SMT2 negated: (assert (= (issue pi1) (issue pi2))) with pi1 != pi2.
 % % Injectivity forces pi1=pi2 => contradiction with distinctness.
 % % NOTE: issue/1 is a PAAR benchmark function; not used in GRND001-024 paper problems.
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% @prefix schema: <https://schema.org/> .
-% # Policy issuance authority test.
-% ... (18 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

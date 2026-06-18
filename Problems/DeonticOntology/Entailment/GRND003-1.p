@@ -3,21 +3,13 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Prohibition creates Duty and Right over rfr(a)
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND003-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % proh(f1) activated by e1 entails Duty(portal,rfr(distrib),museum_api)
 % % and Right(museen,rfr(distrib),museum_api).
 % % Abstract constants: portal=drk:StreamingPortalGmbH,
 % %   museen=drk:StaatlicheMuseenBerlin, distrib=odrl:distribute,
 % %   museum_api=drk:MuseumCollectionAPI
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% @prefix schema: <https://schema.org/> .
-% drk:policy-no-distribute> a odrl:Agreement ;
-% ... (12 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

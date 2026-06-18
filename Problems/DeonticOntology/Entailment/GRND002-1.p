@@ -3,21 +3,13 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Permission creates Permission and NoRight
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND002-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % perm(p1) activated by e1 entails Permission(bibliothek,read,theater_ds)
 % % and NoRight(ensemble,read,theater_ds).
 % % Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 % %   ensemble=drk:BerlinerEnsemble, read=odrl:read,
 % %   theater_ds=drk:TheaterShowtimeDataset
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% @prefix schema: <https://schema.org/> .
-% drk:policy-theater-read a odrl:Agreement ;
-% ... (12 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

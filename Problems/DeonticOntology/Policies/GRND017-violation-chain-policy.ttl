@@ -3,7 +3,7 @@
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : A1-A3+B1: violation triggers norm state change requiring Power
 # Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-06-12 by gen_foundation_problems.py
+# Generated: 2026-06-18 by gen_foundation_problems.py
 # Links    : Entailment/GRND017-violation-chain-1.p
 #            Entailment/GRND017-violation-chain-1.smt2
 # ------------------------------------------------------------------------------

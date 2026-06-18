@@ -3,20 +3,12 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Closed-world: no Permission for uncovered action
 % Status   : Satisfiable
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND007-closed-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % No perm rule for modify_act. No open-world closure.
 % % Permission(portal,modify_act,theater_ds) is NOT derivable.
 % % Abstract constants: portal=drk:StreamingPortalGmbH,
 % %   modify_act=odrl:modify, theater_ds=drk:TheaterShowtimeDataset
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% # behaviour=closed policy over drk:TheaterShowtimeDataset.
-% # No permission for odrl:modify declared.
-% ... (4 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

@@ -5,21 +5,13 @@
 ; Status   : unsat
 ; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
 ; Policy   : Policies/GRND007-open-policy.ttl
-; Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+; Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 ;
 ; Open-world closure added. No proh for modify_act.
 ; Permission(portal,modify_act,theater_ds) is derivable.
 ; Abstract constants: portal=drk:StreamingPortalGmbH,
 ;   ensemble=drk:BerlinerEnsemble, modify_act=odrl:modify,
 ;   theater_ds=drk:TheaterShowtimeDataset
-;
-; ODRL Policy (Turtle) — see Policies/ for full file:
-; @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-; @prefix drk:    <http://w3id.org/drk/ontology/> .
-; @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-; # behaviour=open policy over drk:TheaterShowtimeDataset.
-; # No prohibition on odrl:modify declared.
-; ... (5 more lines — see Policies/ file)
 ; --------------------------------------------------------------------------
 
 ; === Layer 0 + Layer 1 preamble (embedded — SMT-LIB has no include) ===
@@ -36,7 +28,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
-; Generated: 2026-06-12 by gen_layer0_signature.py
+; Generated: 2026-06-18 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.

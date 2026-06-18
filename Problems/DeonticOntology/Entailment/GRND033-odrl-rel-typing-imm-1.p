@@ -3,15 +3,10 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Ax5.7 imm: founds_imm + perm => odrl_rel
 % Status   : Theorem
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND033-odrl-rel-typing-imm-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % founds_imm(e1,rho1,p1) & perm(p1) => odrl_rel(rho1).
 % % Ax5.7 immunity variant tested in isolation.
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl: <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:  <http://w3id.org/drk/ontology/> .
-% # Ax5.7 imm: an immunity relator founded by a permission is an ODRL relator.
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

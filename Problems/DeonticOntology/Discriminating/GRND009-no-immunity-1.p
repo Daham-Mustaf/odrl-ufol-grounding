@@ -3,7 +3,7 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Weak permission: Permission+Duty conflict when prohibition added
 % Status   : Unsatisfiable
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND009-no-immunity-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % H1 = {Permission, NoRight} — no Immunity/Disability.
 % % museen adds proh(f2): Ax5.3 creates Duty(bibliothek,rfr(read),museum_api).
@@ -11,14 +11,6 @@
 % % Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 % %   museen=drk:StaatlicheMuseenBerlin, read=odrl:read,
 % %   museum_api=drk:MuseumCollectionAPI
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% @prefix schema: <https://schema.org/> .
-% drk:policy-conflict a odrl:Agreement ;
-% ... (18 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)

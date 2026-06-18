@@ -3,7 +3,7 @@
 % Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Obligation + Prohibition coexist: Duty(a) vs Duty(rfr(a)) distinct
 % Status   : Satisfiable
 % Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND024-obl-proh-coexist-policy.ttl
-% Generated: 2026-06-12 by gen_foundation_problems.py v1.5
+% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
 %
 % % obl(obl1) activated at e1: creates Duty(bibliothek, read, theater_ds).
 % % proh(f1)  activated at e2: creates Duty(bibliothek, rfr(read), theater_ds).
@@ -13,14 +13,6 @@
 % % Abstract constants: bibliothek=drk:UniversitaetsbibliothekMuenchen,
 % %   ensemble=drk:BerlinerEnsemble, museen=drk:StaatlicheMuseenBerlin,
 % %   read=odrl:read, theater_ds=drk:TheaterShowtimeDataset
-%
-% ODRL Policy (Turtle) — see Policies/ for full file:
-% @prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
-% @prefix drk:    <http://w3id.org/drk/ontology/> .
-% @prefix dcat:   <http://www.w3.org/ns/dcat#> .
-% @prefix schema: <https://schema.org/> .
-% # Obligation to read AND prohibition on reading coexist
-% ... (19 more lines — see Policies/ file)
 %--------------------------------------------------------------------------
 
 % Layer 0: Signature (sorts, rfr/decl, position disjointness)
