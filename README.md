@@ -19,8 +19,7 @@ ODRL-Legal (`odrl-l:`) OWL profile.
 A subset of the first-order (TPTP/FOF) encodings in this benchmark has
 been accepted into the Thousands of Problems for Theorem Provers (TPTP)
 library, maintained by Geoff Sutcliffe (University of Miami). The
-contribution is acknowledged in the TPTP Technical Report
-(https://tptp.org/UserDocs/ProblemLibraryManual/TPTPTR.shtml). See
+contribution is acknowledged in the [TPTP Technical Report](https://tptp.org/UserDocs/ProblemLibraryManual/TPTPTR.shtml#Conclusion). See
 https://tptp.org/ for the library and its usage conditions.
 
 The full problem set is mirrored here for reproducibility, alongside the
