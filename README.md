@@ -14,6 +14,16 @@ Permissions, Prohibitions, and Duties in UFO-L"**
 grounding of ODRL across three independent provers, plus the
 ODRL-Legal (`odrl-l:`) OWL profile.
 
+## TPTP Library
+
+The first-order (TPTP/FOF) encodings of the grounding axioms in this
+benchmark have been accepted into the Thousands of Problems for Theorem
+Provers (TPTP) library, maintained by Geoff Sutcliffe (University of Miami).
+See https://tptp.org/ for the library and its usage conditions.
+
+These problems are also distributed here for reproducibility, alongside
+their SMT-LIB 2 counterparts and the source policies.
+
 ## Repository structure
 ```
 Generators/           Python scripts that generate all problem files

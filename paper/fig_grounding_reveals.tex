@@ -1,0 +1,97 @@
+% fig_grounding_reveals.tex  --  \input{fig_grounding_reveals}
+% Palette: gray = native ODRL/evaluator; blue = conduct-level grounding;
+% orange = competence-level grounding (the contribution); dashed white = odrl-l: term.
+% Colour is reinforcing only (column position + bold + dashed border carry the
+% meaning), so the figure stays readable in grayscale and for color-blind readers.
+% Colour key is in the caption (shaded words); there is no separate in-figure legend.
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  box/.style={draw,rounded corners=3pt,align=center,
+    minimum width=2.6cm,minimum height=0.72cm,font=\scriptsize},
+  % split boxes are width-capped so long text wraps instead of overflowing
+  splitbox/.style={box,text width=2.45cm,inner sep=2pt,minimum height=0.62cm},
+  widebox/.style={box,text width=2.5cm,inner sep=2pt},
+  nativebox/.style={box,fill=black!8},
+  conductbox/.style={box,fill=blue!14},
+  compbox/.style={box,fill=orange!28},
+  profilebox/.style={box,fill=white,draw=black!55,dashed,font=\scriptsize\ttfamily},
+  arrow/.style={-{Stealth[length=4pt]},thick},
+  darrow/.style={arrow,dashed}
+]
+% ---- column headers ----
+\foreach \x/\t in {1.3/{ODRL rule},4.5/{Evaluator sees},%
+                   7.7/{Grounding reveals},10.9/{\texttt{odrl-l:} term}}
+  \node[font=\scriptsize\bfseries,align=center] at (\x,0) {\t};
+
+% ---- Row 1: Permission ----
+\node[nativebox]  (p1) at (1.3,-0.9)  {\odrl{Permission}};
+\node[nativebox]  (p2) at (4.5,-0.9)  {Permission};
+\node[conductbox] (p3) at (7.7,-0.9)  {Permission\\$+$ \textbf{No Right}};
+\node[profilebox] (p4) at (10.9,-0.9) {odrl-l:\\PermissionRelator};
+\draw[arrow](p1)--(p2); \draw[arrow](p2)--(p3); \draw[darrow](p3)--(p4);
+
+% ---- Row 2: Prohibition ----
+\node[nativebox]  (f1) at (1.3,-2.0)  {\odrl{Prohibition}};
+\node[nativebox]  (f2) at (4.5,-2.0)  {Duty to Omit};
+\node[conductbox] (f3) at (7.7,-2.0)  {Duty to Omit\\$+$ \textbf{Right to Omission}};
+\node[profilebox] (f4) at (10.9,-2.0) {odrl-l:\\ProhibitionRelator};
+\draw[arrow](f1)--(f2); \draw[arrow](f2)--(f3); \draw[darrow](f3)--(f4);
+
+% ---- Row 3: Duty ----
+\node[nativebox]  (d1) at (1.3,-3.1)  {\odrl{Duty}};
+\node[nativebox]  (d2) at (4.5,-3.1)  {Duty to Act};
+\node[conductbox] (d3) at (7.7,-3.1)  {Duty to Act\\$+$ \textbf{Right to Action}};
+\node[profilebox] (d4) at (10.9,-3.1) {odrl-l:\\ObligationRelator};
+\draw[arrow](d1)--(d2); \draw[arrow](d2)--(d3); \draw[darrow](d3)--(d4);
+
+% ---- Row 4: Prohibition + remedy (founds a conduct AND a competence relator) ----
+\node[nativebox] (r1) at (1.3,-4.55) {\odrl{Prohibition}\\$+$ \odrl{remedy}};
+\node[nativebox] (r2) at (4.5,-4.55) {Duty to Omit\\\textcolor{red!65}{(violated?)}};
+\node[conductbox,splitbox] (r3a) at (7.7,-4.10) {Duty to Omit\\$+$ \textbf{Right to Omission}};
+\node[compbox,splitbox]    (r3b) at (7.7,-5.00) {$+$ \textbf{Power}\\$+$ \textbf{Subjection}};
+\node[profilebox] (r4) at (10.9,-4.55) {odrl-l:\\hasRemedy$^\dagger$};
+\draw[arrow](r1)--(r2);
+\draw[arrow](r2)--(r3a); \draw[arrow](r2)--(r3b);
+\draw[darrow](r3a)--(r4); \draw[darrow](r3b)--(r4);
+
+% ---- Row 5: Strong permission (founds a conduct AND a competence relator) ----
+\node[nativebox] (s1) at (1.3,-6.45) {\odrl{Permission}\\(strong)};
+\node[nativebox] (s2) at (4.5,-6.45) {Permission\\\textcolor{red!65}{(unprotected?)}};
+\node[conductbox,splitbox] (s3a) at (7.7,-6.00) {Permission\\$+$ \textbf{No Right}};
+\node[compbox,splitbox]    (s3b) at (7.7,-6.90) {$+$ \textbf{Immunity}\\$+$ \textbf{Disability}};
+\node[profilebox] (s4) at (10.9,-6.45) {odrl-l:\\stronglyPermitted$^\dagger$};
+\draw[arrow](s1)--(s2);
+\draw[arrow](s2)--(s3a); \draw[arrow](s2)--(s3b);
+\draw[darrow](s3a)--(s4); \draw[darrow](s3b)--(s4);
+
+% ---- Row 6: motivating scenario (resolved) ----
+\node[nativebox] (c1) at (1.3,-8.1)  {\texttt{:pol1} vs \texttt{:pol2}\\distinct IRIs,\\same content};
+\node[nativebox] (c2) at (4.5,-8.1)  {\texttt{violated} (each)\\\textcolor{red!65}{(nothing further)}};
+\node[compbox,widebox] (c3) at (7.7,-8.1) {$\rho_{R1}$(\texttt{:ProviderA})\\$\neq\;\rho_{R2}$(\texttt{:ProviderB})\\Power per assigner};
+\node[profilebox](c4) at (10.9,-8.1) {odrl-l:\\hasRemedy$^\dagger$};
+\draw[arrow](c1)--(c2); \draw[arrow](c2)--(c3); \draw[darrow](c3)--(c4);
+
+% ---- separator between "what is entailed" and "what the profile adds" ----
+\draw[black!40,dashed] (9.2,0.35)--(9.2,-8.65);
+\node[font=\scriptsize\itshape,black!55,anchor=west] at (9.3,0.6)
+  {requires \texttt{odrl-l:} $\rightarrow$};
+\end{tikzpicture}%
+}
+\caption{From an ODRL rule to its UFO-L grounding and the \texttt{odrl-l:}
+profile term. Each row reads left to right: the ODRL rule, what a native ODRL
+evaluator computes, the full simple legal relator the grounding reveals, and the
+\texttt{odrl-l:} term needed to represent it (Table~\ref{tab:positions}).
+Shading: \colorbox{black!8}{\strut native} ODRL;
+\colorbox{blue!14}{\strut conduct}- and \colorbox{orange!28}{\strut competence}-level
+positions; dashed outlines mark the \texttt{odrl-l:} profile.
+\textbf{Bold} marks positions absent from the evaluator's output;
+\textcolor{red!65}{(?)} marks where the evaluator halts; $^\dagger$ marks the two
+ODRL extension points. A prohibition with a remedy (row~4) and a strong
+permission (row~5) each found a conduct relator and a competence relator at one
+activation event. Row~6 instantiates the motivating scenario of
+Section~\ref{sec:introduction}: distinct remedy relators per assigner make
+violation-declaration authority provider-specific.}
+\label{fig:grounding-reveals}
+\end{figure*}
