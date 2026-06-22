@@ -16,13 +16,15 @@ ODRL-Legal (`odrl-l:`) OWL profile.
 
 ## TPTP Library
 
-The first-order (TPTP/FOF) encodings of the grounding axioms in this
-benchmark have been accepted into the Thousands of Problems for Theorem
-Provers (TPTP) library, maintained by Geoff Sutcliffe (University of Miami).
-See https://tptp.org/ for the library and its usage conditions.
+A subset of the first-order (TPTP/FOF) encodings in this benchmark has
+been accepted into the Thousands of Problems for Theorem Provers (TPTP)
+library, maintained by Geoff Sutcliffe (University of Miami). The
+contribution is acknowledged in the TPTP Technical Report
+(https://tptp.org/UserDocs/ProblemLibraryManual/TPTPTR.shtml). See
+https://tptp.org/ for the library and its usage conditions.
 
-These problems are also distributed here for reproducibility, alongside
-their SMT-LIB 2 counterparts and the source policies.
+The full problem set is mirrored here for reproducibility, alongside the
+SMT-LIB 2 counterparts and the source policies.
 
 ## Repository structure
 ```
