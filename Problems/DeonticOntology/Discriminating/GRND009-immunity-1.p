@@ -1,9 +1,13 @@
 %--------------------------------------------------------------------------
 % File     : GRND009-immunity-1.p
-% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Strong permission: Permission persists (Disability blocks prohibition)
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding
+% Problem  : Strong permission: Permission persists (Disability blocks prohibition)
 % Status   : Unsatisfiable
-% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND009-immunity-policy.ttl
-% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
+% Refs     : [Mus+26] D. M. Mustafa, C. Lange, G. Guizzardi, D. Collarana, C. Quix, S. Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L. FOIS 2026; Frontiers in Artificial Intelligence and Applications, IOS Press. arXiv:2606.24344.
+% Source   : https://github.com/Daham-Mustaf/odrl-ufol-grounding
+% Authors  : Daham Mustafa
+% Policy   : Policies/GRND009-immunity-policy.ttl
+% Generated: 2026-06-25 by gen_foundation_problems.py v1.6
 %
 % % H2 = {Permission, NoRight, Immunity, Disability}.
 % % museen attempts proh(f2). Ax5.10: Disability + proh => False.

@@ -1,9 +1,13 @@
 %--------------------------------------------------------------------------
 % File     : GRND029-b2-power-about-event-1.p
-% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : B2 alone: Power in remedy relator concerns founding event
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding
+% Problem  : B2 alone: Power in remedy relator concerns founding event
 % Status   : Theorem
-% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND029-b2-power-about-event-policy.ttl
-% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
+% Refs     : [Mus+26] D. M. Mustafa, C. Lange, G. Guizzardi, D. Collarana, C. Quix, S. Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L. FOIS 2026; Frontiers in Artificial Intelligence and Applications, IOS Press. arXiv:2606.24344.
+% Source   : https://github.com/Daham-Mustaf/odrl-ufol-grounding
+% Authors  : Daham Mustafa
+% Policy   : Policies/GRND029-b2-power-about-event-policy.ttl
+% Generated: 2026-06-25 by gen_foundation_problems.py v1.6
 %
 % % Power(pw) with cnt(pw,decl(distrib),concert_ds) partOf rho_R,
 % % and founds_rem(e1,rho_R,f1) => about_event(pw, e1).

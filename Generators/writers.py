@@ -2,12 +2,16 @@
 writers.py
 ==========
 File writers for the FOIS 2026 deontic grounding benchmark.
+
 Imports axiom content from axiom_data.py and problem definitions
 from problem_data.py.
+
 Exported functions:
   write_fof_problem(p, out_dir)   -> Path
   write_smt2_problem(p, out_dir)  -> Path
+
 Imported by: gen_foundation_problems.py
+
 Fix history:
   v1.5 — import corrected from gen_layer0_signature (Bug 1 — was gen_signature);
           _get_axiom helper added for diagnostic KeyError on missing axiom keys
@@ -21,7 +25,17 @@ Fix history:
           SMT2 writer asymmetry documented — full axiom set always embedded
           because Z3 does not timeout on full set; FOF uses per-problem subsets
           to avoid Vampire timeouts (was undocumented).
+  v1.6 — FOF header field concatenation fixed (Bug 4 — two missing commas in the
+          write_fof_problem header list caused adjacent string literals to be
+          implicitly concatenated: 'Domain' ran into 'Problem' and 'Refs' ran
+          into 'Policy', producing malformed single-line header fields in every
+          .p file; the .smt2 writer was unaffected as it had the commas);
+          provenance de-anonymised after public release — Refs now carries the
+          full author list and arXiv:2606.24344, and Source/Authors fields added
+          to both writers (shared CITATION/SOURCE_URL/AUTHORS constants so the
+          two writers cannot diverge).
 """
+
 import sys
 import textwrap
 from pathlib import Path
@@ -38,13 +52,24 @@ from axiom_data import (
     FOF_APPENDIX_DECLS,
 )
 
-VERSION = "1.5"
+VERSION = "1.6"
 GENERATOR = f"gen_foundation_problems.py v{VERSION}"
 SMT2_PREAMBLE = _gen_smt2()
 
 # Maximum TTL lines inlined into problem file headers.
 # Full policy is always in Policies/<id>-policy.ttl.
 _TTL_HEADER_MAX_LINES = 5
+
+# Shared provenance block — used by BOTH writers so the attribution can never
+# diverge between the .p and .smt2 copies. De-anonymised on public release.
+CITATION = (
+    "[Mus+26] D. M. Mustafa, C. Lange, G. Guizzardi, D. Collarana, C. Quix, "
+    "S. Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of "
+    "Permissions, Prohibitions, and Duties in UFO-L. FOIS 2026; Frontiers in "
+    "Artificial Intelligence and Applications, IOS Press. arXiv:2606.24344."
+)
+SOURCE_URL = "https://github.com/Daham-Mustaf/odrl-ufol-grounding"
+AUTHORS = "Daham Mustafa"
 
 
 # ============================================================================
@@ -89,15 +114,17 @@ def write_fof_problem(p: dict, out_dir: Path) -> Path:
     subdir = out_dir / p["subdir"]
     subdir.mkdir(parents=True, exist_ok=True)
     path = subdir / f"{p['id']}-1.p"
-    conj = p.get("fof_conjecture")
 
+    conj = p.get("fof_conjecture")
     lines = [
         "%--------------------------------------------------------------------------",
         f"% File     : {p['id']}-1.p",
-        "% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding"
+        "% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding",
         f"% Problem  : {p['name']}",
         f"% Status   : {p['status_fof']}",
-        "% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)"
+        f"% Refs     : {CITATION}",
+        f"% Source   : {SOURCE_URL}",
+        f"% Authors  : {AUTHORS}",
         f"% Policy   : Policies/{p['id']}-policy.ttl",
         f"% Generated: {date.today().isoformat()} by {GENERATOR}",
         "%",
@@ -151,15 +178,17 @@ def write_smt2_problem(p: dict, out_dir: Path) -> Path:
     subdir = out_dir / p["subdir"]
     subdir.mkdir(parents=True, exist_ok=True)
     path = subdir / f"{p['id']}-1.smt2"
-    conj = p.get("smt2_conjecture")
 
+    conj = p.get("smt2_conjecture")
     lines = [
         "; --------------------------------------------------------------------------",
         f"; File     : {p['id']}-1.smt2",
         "; Domain   : Deontic Ontology / ODRL Grounding",
         f"; Problem  : {p['name']}",
         f"; Status   : {p['status_smt']}",
-        "; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)",
+        f"; Refs     : {CITATION}",
+        f"; Source   : {SOURCE_URL}",
+        f"; Authors  : {AUTHORS}",
         f"; Policy   : Policies/{p['id']}-policy.ttl",
         f"; Generated: {date.today().isoformat()} by {GENERATOR}",
         ";",
@@ -218,5 +247,6 @@ def write_smt2_problem(p: dict, out_dir: Path) -> Path:
         ]
 
     lines.append("(check-sat)")
+
     path.write_text("\n".join(lines), encoding="utf-8")
     return path

@@ -1,9 +1,13 @@
 %--------------------------------------------------------------------------
 % File     : GRND036-dual-rule-unique-rem-1.p
-% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Dual-rule unique rem: same event+rule founds at most one remedy relator
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding
+% Problem  : Dual-rule unique rem: same event+rule founds at most one remedy relator
 % Status   : Theorem
-% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND036-dual-rule-unique-rem-policy.ttl
-% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
+% Refs     : [Mus+26] D. M. Mustafa, C. Lange, G. Guizzardi, D. Collarana, C. Quix, S. Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L. FOIS 2026; Frontiers in Artificial Intelligence and Applications, IOS Press. arXiv:2606.24344.
+% Source   : https://github.com/Daham-Mustaf/odrl-ufol-grounding
+% Authors  : Daham Mustafa
+% Policy   : Policies/GRND036-dual-rule-unique-rem-policy.ttl
+% Generated: 2026-06-25 by gen_foundation_problems.py v1.6
 %
 % % Real DRK scenario: pol1 = BerlinerEnsemble prohibition with remedy.
 % % founds_rem(e1,rhoR1,pol1) and founds_rem(e1,rhoR2,pol1) => rhoR1=rhoR2.

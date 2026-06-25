@@ -3,7 +3,7 @@
 # Domain   : Deontic Ontology / ODRL Grounding
 # Problem  : Regimented prohibition: contradiction
 # Refs     : Mohammed et al., What Does ODRL Mean? FOIS 2026
-# Generated: 2026-06-18 by gen_foundation_problems.py
+# Generated: 2026-06-25 by gen_foundation_problems.py
 # Links    : Discriminating/GRND008-regimented-1.p
 #            Discriminating/GRND008-regimented-1.smt2
 # ------------------------------------------------------------------------------

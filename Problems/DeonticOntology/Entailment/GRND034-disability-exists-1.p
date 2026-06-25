@@ -1,9 +1,13 @@
 %--------------------------------------------------------------------------
 % File     : GRND034-disability-exists-1.p
-% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding% Problem  : Strong perm creates Disability in assigner (positive conjecture)
+% Domain   : Foundational Ontology (UFO-L) / Deontic ODRL Grounding
+% Problem  : Strong perm creates Disability in assigner (positive conjecture)
 % Status   : Theorem
-% Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)% Policy   : Policies/GRND034-disability-exists-policy.ttl
-% Generated: 2026-06-18 by gen_foundation_problems.py v1.5
+% Refs     : [Mus+26] D. M. Mustafa, C. Lange, G. Guizzardi, D. Collarana, C. Quix, S. Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L. FOIS 2026; Frontiers in Artificial Intelligence and Applications, IOS Press. arXiv:2606.24344.
+% Source   : https://github.com/Daham-Mustaf/odrl-ufol-grounding
+% Authors  : Daham Mustafa
+% Policy   : Policies/GRND034-disability-exists-policy.ttl
+% Generated: 2026-06-25 by gen_foundation_problems.py v1.6
 %
 % % perm(p1) + strong(p1) + activates(e1,p1).
 % % Conjecture: exists Disability(museen, read, museum_api) in some rho_I.

@@ -3,9 +3,11 @@
 ; Domain   : Deontic Ontology / ODRL Grounding
 ; Problem  : Dual-rule unique rem: same event+rule founds at most one remedy relator
 ; Status   : unsat
-; Refs     : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
+; Refs     : [Mus+26] D. M. Mustafa, C. Lange, G. Guizzardi, D. Collarana, C. Quix, S. Decker. What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L. FOIS 2026; Frontiers in Artificial Intelligence and Applications, IOS Press. arXiv:2606.24344.
+; Source   : https://github.com/Daham-Mustaf/odrl-ufol-grounding
+; Authors  : Daham Mustafa
 ; Policy   : Policies/GRND036-dual-rule-unique-rem-policy.ttl
-; Generated: 2026-06-18 by gen_foundation_problems.py v1.5
+; Generated: 2026-06-25 by gen_foundation_problems.py v1.6
 ;
 ; Real DRK scenario: pol1 = BerlinerEnsemble prohibition with remedy.
 ; founds_rem(e1,rhoR1,pol1) and founds_rem(e1,rhoR2,pol1) => rhoR1=rhoR2.
@@ -27,7 +29,7 @@
 ;              SMT2_PREAMBLE = _gen_smt2()
 ;
 ; Source   : Mustafa et al., What Does ODRL Mean? A Cross-Level Ontological Grounding of Permissions, Prohibitions, and Duties in UFO-L (FOIS 2026)
-; Generated: 2026-06-18 by gen_layer0_signature.py
+; Generated: 2026-06-25 by gen_layer0_signature.py
 ;
 ; Key design decisions:
 ;   NormContent (Issue 1): replaces separate Action + Forbearance sorts.
