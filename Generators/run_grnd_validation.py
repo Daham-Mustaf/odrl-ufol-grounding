@@ -1,8 +1,9 @@
 """
 run_grnd_validation.py
 ======================
-Runs Vampire (FOF) and Z3 (SMT-LIB) on all GRND foundation ontology
-problems and saves results to results/grnd_foundation_<date>.csv.
+Runs Vampire (FOF), Z3 (SMT-LIB), and optionally E (FOF) and cvc5 (SMT-LIB)
+on all GRND foundation ontology problems and saves results to
+results/grnd_foundation_<date>.csv.
 
 Can be run from any directory — paths are resolved relative to this file:
     uv run Generators/DeonticOntology/run_grnd_validation.py
@@ -11,6 +12,8 @@ Can be run from any directory — paths are resolved relative to this file:
     uv run Generators/DeonticOntology/run_grnd_validation.py --timeout 120
     uv run Generators/DeonticOntology/run_grnd_validation.py --vampire-only
     uv run Generators/DeonticOntology/run_grnd_validation.py --z3-only
+    uv run Generators/DeonticOntology/run_grnd_validation.py --eprover
+    uv run Generators/DeonticOntology/run_grnd_validation.py --cvc5
     uv run Generators/DeonticOntology/run_grnd_validation.py --proof
     uv run Generators/DeonticOntology/run_grnd_validation.py --proof --problem GRND002
 
@@ -43,6 +46,14 @@ Fix history v1.6:
     safe: anything casc could prove is still attempted under casc. Satisfiable
     problems keep the portfolio/casc_sat schedule (default mode has no
     finite-model finder).
+
+Fix history v1.7:
+  - Added optional cvc5 SMT-LIB prover (--cvc5), mirroring run_z3 on the same
+    .smt2 files. cvc5 is a fourth independent check (not in the paper's Table,
+    which lists Vampire/E/Z3). A cvc5 non-decision (unknown / time-limit) on a
+    problem is recorded as SKIP, NOT FAIL — only a definite contradictory
+    verdict counts as FAIL. Summary now reports PASS/FAIL/SKIP and the non-zero
+    exit triggers on FAIL only.
 """
 
 import argparse
@@ -64,6 +75,10 @@ REPO_ROOT   = Path(__file__).resolve().parent.parent
 BASE        = REPO_ROOT / "Problems" / "DeonticOntology"
 INCLUDE_DIR = str(BASE)
 LAYER0_AX   = BASE / "Axioms" / "Layer0-Signature" / "GRND000-0.ax"
+
+# Label for the cvc5 prover column. Pin to your installed version if you wish,
+# e.g. "cvc5 1.3.4".
+CVC5_LABEL = "cvc5"
 
 sys.path.insert(0, str(Path(__file__).parent))
 from problem_data import PROBLEMS
@@ -231,6 +246,67 @@ def run_z3(job: dict, proof: bool = False) -> dict:
         "proof_text": out.stdout if proof else "",
     }
 
+def run_cvc5(job: dict, proof: bool = False) -> dict:
+    """Run cvc5 on an .smt2 problem. Mirrors run_z3.
+
+    cvc5 is a fourth, optional SMT check (not in the paper's Table). A
+    non-decision (unknown / time-limit reached) is recorded as SKIP, not FAIL;
+    only a definite contradictory verdict (e.g. sat on an unsat problem) is a
+    FAIL.
+    """
+    path    = job["path"]          # already absolute
+    timeout = job["timeout"]
+    is_sat  = job.get("is_sat", False)
+
+    # For sat problems with --proof, append (get-model) to a temp copy.
+    if proof and is_sat:
+        tmp = tempfile.NamedTemporaryFile(
+            suffix=".smt2", delete=False, mode="w", encoding="utf-8"
+        )
+        tmp.write(Path(path).read_text(encoding="utf-8"))
+        tmp.write("\n(get-model)\n")
+        tmp.close()
+        run_path = tmp.name
+    else:
+        run_path = str(path)
+
+    # cvc5 uses a millisecond time limit (--tlimit).
+    cmd = ["cvc5", f"--tlimit={timeout * 1000}"]
+    if proof and is_sat:
+        cmd.append("--produce-models")
+    cmd.append(run_path)
+    t0  = time.time()
+    out = subprocess.run(cmd, capture_output=True, text=True)
+    elapsed = round(time.time() - t0, 3)
+
+    if proof and is_sat and run_path != str(path):
+        os.unlink(run_path)
+
+    raw_lines  = out.stdout.strip().splitlines()
+    first_line = raw_lines[0].strip() if raw_lines else "timeout"
+    expected   = job["expected"]
+
+    # A non-decision (unknown / timeout / no output) is a SKIP, not a FAIL —
+    # it is a capability limit of the solver, not a wrong verdict. A definite
+    # sat/unsat that disagrees with the expected status is a real FAIL.
+    if first_line in ("unknown", "timeout", ""):
+        result      = "skip"
+        result_pass = "SKIP"
+    else:
+        result      = first_line
+        result_pass = "PASS" if result == expected else "FAIL"
+
+    return {
+        "problem":    job["problem"],
+        "prover":     CVC5_LABEL,
+        "mode":       "default",
+        "expected":   expected,
+        "result":     result,
+        "time_s":     elapsed,
+        "pass":       result_pass,
+        "proof_text": out.stdout if proof else "",
+    }
+
 # ============================================================================
 # E PROVER RUNNER
 # ============================================================================
@@ -313,7 +389,7 @@ def main():
     os.environ["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + os.environ.get("PATH", "")
 
     parser = argparse.ArgumentParser(
-        description="Run Vampire + Z3 on GRND foundation ontology benchmark."
+        description="Run Vampire + Z3 (+ optional E, cvc5) on the GRND benchmark."
     )
     parser.add_argument(
         "--timeout", type=int, default=60,
@@ -358,6 +434,10 @@ def main():
     parser.add_argument(
         "--eprover", action="store_true",
         help="Also run E prover on all non-sat FOF problems",
+    )
+    parser.add_argument(
+        "--cvc5", action="store_true",
+        help="Also run cvc5 on all SMT-LIB problems (fourth independent check)",
     )
     args = parser.parse_args()
 
@@ -410,6 +490,16 @@ def main():
             if args.proof and job.get("is_sat"):
                 print_proof(row)
 
+    # ── cvc5 ─────────────────────────────────────────────────────────────────
+    if args.cvc5 and not args.vampire_only:
+        print("=== cvc5 (SMT-LIB) ===")
+        for job in build_smt2_jobs(problems, args.timeout):
+            row    = run_cvc5(job, proof=args.proof)
+            rows.append(row)
+            flag   = {"PASS": "✓", "FAIL": "✗", "SKIP": "–"}.get(row["pass"], "?")
+            note   = " [skip: no decision]" if row["pass"] == "SKIP" else ""
+            print(f"  {flag} {row['problem']:35s}  {row['result']:15s}  {row['time_s']}s{note}")
+
     # ── E prover ─────────────────────────────────────────────────────────────
     if args.eprover:
         print("=== E (FOF) ===")
@@ -422,9 +512,11 @@ def main():
             print(f"  {flag} {row['problem']:35s}  {row['result']:15s}  {row['time_s']}s")
 
     # ── Summary ──────────────────────────────────────────────────────────────
-    passed = sum(1 for r in rows if r["pass"] == "PASS")
-    failed = sum(1 for r in rows if r["pass"] == "FAIL")
-    print(f"\nSummary: {passed}/{len(rows)} PASS  {failed} FAIL")
+    passed  = sum(1 for r in rows if r["pass"] == "PASS")
+    failed  = sum(1 for r in rows if r["pass"] == "FAIL")
+    skipped = sum(1 for r in rows if r["pass"] == "SKIP")
+    tail    = f"  {skipped} SKIP" if skipped else ""
+    print(f"\nSummary: {passed}/{len(rows)} PASS  {failed} FAIL{tail}")
 
     # ── CSV ──────────────────────────────────────────────────────────────────
     out_dir = Path(args.out_dir)
@@ -449,7 +541,7 @@ def main():
         print("\nFAILED problems:")
         for r in rows:
             if r["pass"] == "FAIL":
-                print(f"  {r['problem']}  expected={r['expected']}  got={r['result']}")
+                print(f"  {r['problem']} [{r['prover']}]  expected={r['expected']}  got={r['result']}")
         sys.exit(1)
 
 if __name__ == "__main__":

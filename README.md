@@ -61,6 +61,9 @@ uv run run_grnd_validation.py --dualrule --timeout 30
 # Step 4: Validate with Vampire + E (75 checks)
 uv run run_grnd_validation.py --dualrule --timeout 30 \
   --eprover --vampire-only
+
+uv run Generators/run_grnd_validation.py --dualrule --timeout 30 --eprover --cvc5
+python3 unify_results.py grounding=results/grnd_foundation_dualrule_$(date +%Y%m%d).csv -o results.csv
 ```
 
 ## Isabelle/HOL
