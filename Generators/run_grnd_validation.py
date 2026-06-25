@@ -3,6 +3,7 @@ run_grnd_validation.py
 ======================
 Runs Vampire (FOF) and Z3 (SMT-LIB) on all GRND foundation ontology
 problems and saves results to results/grnd_foundation_<date>.csv.
+
 Can be run from any directory — paths are resolved relative to this file:
     uv run Generators/DeonticOntology/run_grnd_validation.py
     uv run Generators/DeonticOntology/run_grnd_validation.py --ext
@@ -12,13 +13,17 @@ Can be run from any directory — paths are resolved relative to this file:
     uv run Generators/DeonticOntology/run_grnd_validation.py --z3-only
     uv run Generators/DeonticOntology/run_grnd_validation.py --proof
     uv run Generators/DeonticOntology/run_grnd_validation.py --proof --problem GRND002
+
 --hard implies --ext automatically (GRND019-024 depend on GRND010-018).
+
 --proof flag:
   Vampire: prints full TPTP proof + which axioms were used
   Z3:      appends (get-model) for sat problems, shows model
+
 Output:
     <repo_root>/results/grnd_foundation_<YYYYMMDD>.csv
     Columns: problem, prover, mode, expected, result, time_s, pass
+
 Fix history v1.5:
   - Z3 version string corrected to "Z3 4.12.2" (matches paper §6)
   - SAT_IDS: GRND024-obl-proh-conflict -> GRND024-obl-proh-coexist
@@ -29,7 +34,17 @@ Fix history v1.5:
   - PATH prepended with /usr/local/bin:/opt/homebrew/bin so uv run
     subprocess finds vampire and z3 regardless of shell PATH
   - proof_text key stripped cleanly before CSV write via fieldnames filter
+
+Fix history v1.6:
+  - run_vampire proof path: try Vampire's DEFAULT strategy first, then fall
+    back to `--mode casc` only if default does not return a decision. The casc
+    schedule timed out on GRND031 within the limit (so did --mode portfolio)
+    even though default mode proves GRND031 in <1s. The fallback is strictly
+    safe: anything casc could prove is still attempted under casc. Satisfiable
+    problems keep the portfolio/casc_sat schedule (default mode has no
+    finite-model finder).
 """
+
 import argparse
 import csv
 import os
@@ -52,6 +67,7 @@ LAYER0_AX   = BASE / "Axioms" / "Layer0-Signature" / "GRND000-0.ax"
 
 sys.path.insert(0, str(Path(__file__).parent))
 from problem_data import PROBLEMS
+
 try:
     from problem_data_ext import PROBLEMS_EXT
 except ImportError:
@@ -60,12 +76,10 @@ try:
     from problem_data_hard import PROBLEMS_HARD
 except ImportError:
     PROBLEMS_HARD = []
-
 try:
     from problem_data_coverage import PROBLEMS_COVERAGE
 except ImportError:
     PROBLEMS_COVERAGE = []
-
 try:
     from problem_data_dualrule import PROBLEMS_DUALRULE
 except ImportError:
@@ -74,7 +88,6 @@ except ImportError:
 # ============================================================================
 # Problem → prover job mapping
 # ============================================================================
-
 # Problems that are satisfiable — Vampire needs portfolio mode;
 # Z3 returns "sat" rather than "unsat".
 SAT_IDS = {
@@ -82,7 +95,6 @@ SAT_IDS = {
     "GRND007-closed",
     "GRND024-obl-proh-coexist",
 }
-
 
 def build_fof_jobs(problems: list, timeout: int) -> list[dict]:
     jobs = []
@@ -100,7 +112,6 @@ def build_fof_jobs(problems: list, timeout: int) -> list[dict]:
         })
     return jobs
 
-
 def build_smt2_jobs(problems: list, timeout: int) -> list[dict]:
     jobs = []
     for p in problems:
@@ -117,29 +128,45 @@ def build_smt2_jobs(problems: list, timeout: int) -> list[dict]:
         })
     return jobs
 
-
 # ============================================================================
 # Runners
 # ============================================================================
 
-def run_vampire(job: dict, proof: bool = False) -> dict:
-    mode    = job["mode"]
-    path    = job["path"]          # already absolute
+# SZS statuses that count as a definite Vampire decision.
+_VAMPIRE_DECISIVE = {"Theorem", "Unsatisfiable", "ContradictoryAxioms",
+                     "Satisfiable", "CounterSatisfiable"}
+
+def _vampire_call(mode_args: list, job: dict, proof: bool):
+    """Run Vampire once with the given mode args; return (result, elapsed, stdout)."""
     timeout = job["timeout"]
-    if mode == "portfolio":
-        cmd = ["vampire", "--mode", "portfolio", "--schedule", "casc_sat",
-               "-t", str(timeout), "--include", INCLUDE_DIR]
-    else:
-        cmd = ["vampire", "--mode", "casc",
-               "-t", str(timeout), "--include", INCLUDE_DIR]
+    cmd = ["vampire", *mode_args, "-t", str(timeout), "--include", INCLUDE_DIR]
     if proof:
         cmd += ["--proof", "tptp", "--output_axiom_names", "on"]
-    cmd.append(str(path))
-    t0      = time.time()
-    out     = subprocess.run(cmd, capture_output=True, text=True)
+    cmd.append(str(job["path"]))
+    t0  = time.time()
+    out = subprocess.run(cmd, capture_output=True, text=True)
     elapsed = round(time.time() - t0, 3)
-    szs    = re.search(r"SZS status (\w+)", out.stdout)
-    result = szs.group(1) if szs else "Timeout"
+    szs     = re.search(r"SZS status (\w+)", out.stdout)
+    result  = szs.group(1) if szs else "Timeout"
+    return result, elapsed, out.stdout
+
+def run_vampire(job: dict, proof: bool = False) -> dict:
+    mode = job["mode"]
+
+    if mode == "portfolio":
+        # Satisfiable problems: finite-model schedule.
+        result, elapsed, stdout = _vampire_call(
+            ["--mode", "portfolio", "--schedule", "casc_sat"], job, proof)
+    else:
+        # Proof problems: default strategy first (proves most in <1s), then
+        # fall back to the casc schedule only if default does not decide.
+        result, elapsed, stdout = _vampire_call([], job, proof)
+        if result not in _VAMPIRE_DECISIVE:
+            r2, e2, s2 = _vampire_call(["--mode", "casc"], job, proof)
+            elapsed = round(elapsed + e2, 3)
+            if r2 in _VAMPIRE_DECISIVE:
+                result, stdout = r2, s2
+
     return {
         "problem":    job["problem"],
         "prover":     job["prover"],
@@ -148,9 +175,8 @@ def run_vampire(job: dict, proof: bool = False) -> dict:
         "result":     result,
         "time_s":     elapsed,
         "pass":       "PASS" if result == job["expected"] else "FAIL",
-        "proof_text": out.stdout if proof else "",
+        "proof_text": stdout if proof else "",
     }
-
 
 def run_z3(job: dict, proof: bool = False) -> dict:
     path    = job["path"]          # already absolute
@@ -205,7 +231,6 @@ def run_z3(job: dict, proof: bool = False) -> dict:
         "proof_text": out.stdout if proof else "",
     }
 
-
 # ============================================================================
 # E PROVER RUNNER
 # ============================================================================
@@ -219,7 +244,6 @@ def flatten_fof(problem_path: Path) -> str:
         if not line.strip().startswith("include(")
     )
     return layer0 + "\n" + body
-
 
 def run_eprover(job: dict) -> dict:
     path    = job["path"]          # already absolute
@@ -247,7 +271,6 @@ def run_eprover(job: dict) -> dict:
         "time_s":   elapsed,
         "pass":     "PASS" if result == job["expected"] else "FAIL",
     }
-
 
 # ============================================================================
 # Proof printer
@@ -278,13 +301,11 @@ def print_proof(row: dict):
         print(text[:3000])
     print()
 
-
 # ============================================================================
 # Main
 # ============================================================================
 
 CSV_FIELDS = ["problem", "prover", "mode", "expected", "result", "time_s", "pass"]
-
 
 def main():
     # Prepend prover locations to PATH so uv run subprocess finds them
@@ -430,7 +451,6 @@ def main():
             if r["pass"] == "FAIL":
                 print(f"  {r['problem']}  expected={r['expected']}  got={r['result']}")
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()
