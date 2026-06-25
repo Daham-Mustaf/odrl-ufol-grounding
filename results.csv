@@ -1,0 +1,154 @@
+benchmark,problem,group,prover,mode,expected,result,time_s,pass
+grounding,GRND001,,Vampire 5.0,portfolio,Satisfiable,Satisfiable,0.711,PASS
+grounding,GRND002,,Vampire 5.0,casc,Theorem,Theorem,0.009,PASS
+grounding,GRND003,,Vampire 5.0,casc,Theorem,Theorem,0.01,PASS
+grounding,GRND004,,Vampire 5.0,casc,Theorem,Theorem,0.007,PASS
+grounding,GRND005,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.005,PASS
+grounding,GRND006,,Vampire 5.0,casc,Theorem,Theorem,0.007,PASS
+grounding,GRND007-open,,Vampire 5.0,casc,Theorem,Theorem,0.003,PASS
+grounding,GRND007-closed,,Vampire 5.0,portfolio,Satisfiable,Satisfiable,0.428,PASS
+grounding,GRND008-sanctioned,,Vampire 5.0,casc,Theorem,Theorem,0.005,PASS
+grounding,GRND008-regimented,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.004,PASS
+grounding,GRND009-immunity,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.004,PASS
+grounding,GRND009-no-immunity,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.004,PASS
+grounding,GRND010-strong-perm,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND011-obl-relator,,Vampire 5.0,casc,Theorem,Theorem,0.005,PASS
+grounding,GRND012-corr-duty,,Vampire 5.0,casc,Theorem,Theorem,0.007,PASS
+grounding,GRND013-corr-power,,Vampire 5.0,casc,Theorem,Theorem,0.006,PASS
+grounding,GRND014-corr-immunity,,Vampire 5.0,casc,Theorem,Theorem,0.007,PASS
+grounding,GRND015-unique-founding,,Vampire 5.0,casc,Theorem,Theorem,0.003,PASS
+grounding,GRND016-conflict-relator,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.003,PASS
+grounding,GRND017-violation-chain,,Vampire 5.0,casc,Theorem,Theorem,0.007,PASS
+grounding,GRND018-about-event,,Vampire 5.0,casc,Theorem,Theorem,0.005,PASS
+grounding,GRND019-two-policy-conflict,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.004,PASS
+grounding,GRND020-strong-perm-full-h2,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.005,PASS
+grounding,GRND021-remedy-chain,,Vampire 5.0,casc,Theorem,Theorem,0.005,PASS
+grounding,GRND022-corr-nonunique,,Vampire 5.0,casc,Unsatisfiable,Unsatisfiable,0.005,PASS
+grounding,GRND023-policy-issuance,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND024-obl-proh-coexist,,Vampire 5.0,portfolio,Satisfiable,Satisfiable,0.432,PASS
+grounding,GRND025-unique-founding-rem,,Vampire 5.0,casc,Theorem,Theorem,0.005,PASS
+grounding,GRND026-unique-founding-imm,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND027-unique-event-rem,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND028-unique-event-imm,,Vampire 5.0,casc,Theorem,Theorem,0.005,PASS
+grounding,GRND029-b2-power-about-event,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND030-b3-subjection-about-event,,Vampire 5.0,casc,Theorem,Theorem,0.007,PASS
+grounding,GRND031-odrl-rel-is-legal-rel,,Vampire 5.0,casc,Theorem,Theorem,0.003,PASS
+grounding,GRND032-odrl-rel-typing-rem,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND033-odrl-rel-typing-imm,,Vampire 5.0,casc,Theorem,Theorem,0.003,PASS
+grounding,GRND034-disability-exists,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND035-dual-rule-remedy-chain,,Vampire 5.0,casc,Theorem,Theorem,0.004,PASS
+grounding,GRND036-dual-rule-unique-rem,,Vampire 5.0,casc,Theorem,Theorem,0.003,PASS
+grounding,GRND001,,Z3 4.12.2,default,sat,sat-timeout,30.111,PASS
+grounding,GRND002,,Z3 4.12.2,default,unsat,unsat,0.02,PASS
+grounding,GRND003,,Z3 4.12.2,default,unsat,unsat,0.021,PASS
+grounding,GRND004,,Z3 4.12.2,default,unsat,unsat,0.033,PASS
+grounding,GRND005,,Z3 4.12.2,default,unsat,unsat,0.022,PASS
+grounding,GRND006,,Z3 4.12.2,default,unsat,unsat,0.022,PASS
+grounding,GRND007-open,,Z3 4.12.2,default,unsat,unsat,0.048,PASS
+grounding,GRND007-closed,,Z3 4.12.2,default,sat,sat-timeout,30.005,PASS
+grounding,GRND008-sanctioned,,Z3 4.12.2,default,unsat,unsat,0.023,PASS
+grounding,GRND008-regimented,,Z3 4.12.2,default,unsat,unsat,0.02,PASS
+grounding,GRND009-immunity,,Z3 4.12.2,default,unsat,unsat,0.018,PASS
+grounding,GRND009-no-immunity,,Z3 4.12.2,default,unsat,unsat,0.018,PASS
+grounding,GRND010-strong-perm,,Z3 4.12.2,default,unsat,unsat,0.029,PASS
+grounding,GRND011-obl-relator,,Z3 4.12.2,default,unsat,unsat,0.02,PASS
+grounding,GRND012-corr-duty,,Z3 4.12.2,default,unsat,unsat,0.259,PASS
+grounding,GRND013-corr-power,,Z3 4.12.2,default,unsat,unsat,0.033,PASS
+grounding,GRND014-corr-immunity,,Z3 4.12.2,default,unsat,unsat,0.036,PASS
+grounding,GRND015-unique-founding,,Z3 4.12.2,default,unsat,unsat,0.021,PASS
+grounding,GRND016-conflict-relator,,Z3 4.12.2,default,unsat,unsat,0.02,PASS
+grounding,GRND017-violation-chain,,Z3 4.12.2,default,unsat,unsat,0.022,PASS
+grounding,GRND018-about-event,,Z3 4.12.2,default,unsat,unsat,0.021,PASS
+grounding,GRND019-two-policy-conflict,,Z3 4.12.2,default,unsat,unsat,0.023,PASS
+grounding,GRND020-strong-perm-full-h2,,Z3 4.12.2,default,unsat,unsat,0.032,PASS
+grounding,GRND021-remedy-chain,,Z3 4.12.2,default,unsat,unsat,0.021,PASS
+grounding,GRND022-corr-nonunique,,Z3 4.12.2,default,unsat,unsat,0.033,PASS
+grounding,GRND023-policy-issuance,,Z3 4.12.2,default,unsat,unsat,0.023,PASS
+grounding,GRND024-obl-proh-coexist,,Z3 4.12.2,default,sat,sat-timeout,30.152,PASS
+grounding,GRND025-unique-founding-rem,,Z3 4.12.2,default,unsat,unsat,0.022,PASS
+grounding,GRND026-unique-founding-imm,,Z3 4.12.2,default,unsat,unsat,0.03,PASS
+grounding,GRND027-unique-event-rem,,Z3 4.12.2,default,unsat,unsat,0.024,PASS
+grounding,GRND028-unique-event-imm,,Z3 4.12.2,default,unsat,unsat,0.024,PASS
+grounding,GRND029-b2-power-about-event,,Z3 4.12.2,default,unsat,unsat,0.02,PASS
+grounding,GRND030-b3-subjection-about-event,,Z3 4.12.2,default,unsat,unsat,0.024,PASS
+grounding,GRND031-odrl-rel-is-legal-rel,,Z3 4.12.2,default,unsat,unsat,0.021,PASS
+grounding,GRND032-odrl-rel-typing-rem,,Z3 4.12.2,default,unsat,unsat,0.025,PASS
+grounding,GRND033-odrl-rel-typing-imm,,Z3 4.12.2,default,unsat,unsat,0.022,PASS
+grounding,GRND034-disability-exists,,Z3 4.12.2,default,unsat,unsat,0.032,PASS
+grounding,GRND035-dual-rule-remedy-chain,,Z3 4.12.2,default,unsat,unsat,0.025,PASS
+grounding,GRND036-dual-rule-unique-rem,,Z3 4.12.2,default,unsat,unsat,0.019,PASS
+grounding,GRND001,,cvc5,default,sat,skip,0.023,SKIP
+grounding,GRND002,,cvc5,default,unsat,unsat,0.018,PASS
+grounding,GRND003,,cvc5,default,unsat,unsat,0.015,PASS
+grounding,GRND004,,cvc5,default,unsat,unsat,0.014,PASS
+grounding,GRND005,,cvc5,default,unsat,unsat,0.012,PASS
+grounding,GRND006,,cvc5,default,unsat,skip,0.017,SKIP
+grounding,GRND007-open,,cvc5,default,unsat,skip,0.007,SKIP
+grounding,GRND007-closed,,cvc5,default,sat,skip,0.015,SKIP
+grounding,GRND008-sanctioned,,cvc5,default,unsat,unsat,0.024,PASS
+grounding,GRND008-regimented,,cvc5,default,unsat,unsat,0.012,PASS
+grounding,GRND009-immunity,,cvc5,default,unsat,unsat,0.013,PASS
+grounding,GRND009-no-immunity,,cvc5,default,unsat,unsat,0.017,PASS
+grounding,GRND010-strong-perm,,cvc5,default,unsat,unsat,0.016,PASS
+grounding,GRND011-obl-relator,,cvc5,default,unsat,unsat,0.018,PASS
+grounding,GRND012-corr-duty,,cvc5,default,unsat,skip,0.018,SKIP
+grounding,GRND013-corr-power,,cvc5,default,unsat,skip,0.02,SKIP
+grounding,GRND014-corr-immunity,,cvc5,default,unsat,skip,0.022,SKIP
+grounding,GRND015-unique-founding,,cvc5,default,unsat,unsat,0.014,PASS
+grounding,GRND016-conflict-relator,,cvc5,default,unsat,unsat,0.014,PASS
+grounding,GRND017-violation-chain,,cvc5,default,unsat,unsat,0.021,PASS
+grounding,GRND018-about-event,,cvc5,default,unsat,unsat,0.022,PASS
+grounding,GRND019-two-policy-conflict,,cvc5,default,unsat,unsat,0.02,PASS
+grounding,GRND020-strong-perm-full-h2,,cvc5,default,unsat,unsat,0.017,PASS
+grounding,GRND021-remedy-chain,,cvc5,default,unsat,unsat,0.02,PASS
+grounding,GRND022-corr-nonunique,,cvc5,default,unsat,skip,0.019,SKIP
+grounding,GRND023-policy-issuance,,cvc5,default,unsat,unsat,0.015,PASS
+grounding,GRND024-obl-proh-coexist,,cvc5,default,sat,skip,0.026,SKIP
+grounding,GRND025-unique-founding-rem,,cvc5,default,unsat,unsat,0.013,PASS
+grounding,GRND026-unique-founding-imm,,cvc5,default,unsat,unsat,0.012,PASS
+grounding,GRND027-unique-event-rem,,cvc5,default,unsat,unsat,0.013,PASS
+grounding,GRND028-unique-event-imm,,cvc5,default,unsat,unsat,0.015,PASS
+grounding,GRND029-b2-power-about-event,,cvc5,default,unsat,unsat,0.014,PASS
+grounding,GRND030-b3-subjection-about-event,,cvc5,default,unsat,unsat,0.014,PASS
+grounding,GRND031-odrl-rel-is-legal-rel,,cvc5,default,unsat,unsat,0.011,PASS
+grounding,GRND032-odrl-rel-typing-rem,,cvc5,default,unsat,unsat,0.023,PASS
+grounding,GRND033-odrl-rel-typing-imm,,cvc5,default,unsat,unsat,0.016,PASS
+grounding,GRND034-disability-exists,,cvc5,default,unsat,unsat,0.019,PASS
+grounding,GRND035-dual-rule-remedy-chain,,cvc5,default,unsat,unsat,0.021,PASS
+grounding,GRND036-dual-rule-unique-rem,,cvc5,default,unsat,unsat,0.013,PASS
+grounding,GRND002,,E 3.2.5,auto-schedule,Theorem,Theorem,0.007,PASS
+grounding,GRND003,,E 3.2.5,auto-schedule,Theorem,Theorem,0.008,PASS
+grounding,GRND004,,E 3.2.5,auto-schedule,Theorem,Theorem,0.009,PASS
+grounding,GRND005,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.005,PASS
+grounding,GRND006,,E 3.2.5,auto-schedule,Theorem,Theorem,0.053,PASS
+grounding,GRND007-open,,E 3.2.5,auto-schedule,Theorem,Theorem,0.007,PASS
+grounding,GRND008-sanctioned,,E 3.2.5,auto-schedule,Theorem,Theorem,0.007,PASS
+grounding,GRND008-regimented,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.005,PASS
+grounding,GRND009-immunity,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.005,PASS
+grounding,GRND009-no-immunity,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.006,PASS
+grounding,GRND010-strong-perm,,E 3.2.5,auto-schedule,Theorem,Theorem,0.008,PASS
+grounding,GRND011-obl-relator,,E 3.2.5,auto-schedule,Theorem,Theorem,0.007,PASS
+grounding,GRND012-corr-duty,,E 3.2.5,auto-schedule,Theorem,Theorem,0.055,PASS
+grounding,GRND013-corr-power,,E 3.2.5,auto-schedule,Theorem,Theorem,0.053,PASS
+grounding,GRND014-corr-immunity,,E 3.2.5,auto-schedule,Theorem,Theorem,0.044,PASS
+grounding,GRND015-unique-founding,,E 3.2.5,auto-schedule,Theorem,Theorem,0.006,PASS
+grounding,GRND016-conflict-relator,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.006,PASS
+grounding,GRND017-violation-chain,,E 3.2.5,auto-schedule,Theorem,Theorem,0.009,PASS
+grounding,GRND018-about-event,,E 3.2.5,auto-schedule,Theorem,Theorem,0.008,PASS
+grounding,GRND019-two-policy-conflict,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.006,PASS
+grounding,GRND020-strong-perm-full-h2,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.007,PASS
+grounding,GRND021-remedy-chain,,E 3.2.5,auto-schedule,Theorem,Theorem,0.008,PASS
+grounding,GRND022-corr-nonunique,,E 3.2.5,auto-schedule,Unsatisfiable,Unsatisfiable,0.014,PASS
+grounding,GRND023-policy-issuance,,E 3.2.5,auto-schedule,Theorem,Theorem,0.004,PASS
+grounding,GRND025-unique-founding-rem,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND026-unique-founding-imm,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND027-unique-event-rem,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND028-unique-event-imm,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND029-b2-power-about-event,,E 3.2.5,auto-schedule,Theorem,Theorem,0.004,PASS
+grounding,GRND030-b3-subjection-about-event,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND031-odrl-rel-is-legal-rel,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND032-odrl-rel-typing-rem,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND033-odrl-rel-typing-imm,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
+grounding,GRND034-disability-exists,,E 3.2.5,auto-schedule,Theorem,Theorem,0.007,PASS
+grounding,GRND035-dual-rule-remedy-chain,,E 3.2.5,auto-schedule,Theorem,Theorem,0.007,PASS
+grounding,GRND036-dual-rule-unique-rem,,E 3.2.5,auto-schedule,Theorem,Theorem,0.005,PASS
