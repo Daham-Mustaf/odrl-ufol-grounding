@@ -29,13 +29,13 @@
       latestVersion: "https://w3id.org/odrl-legal/",
       edDraftURI: "https://w3id.org/odrl-legal/",
       editors: [
-        { name: "Daham M. Mustafa", company: "RWTH Aachen University / Fraunhofer FIT" }
+      { name: "Daham M. Mustafa", company: "RWTH Aachen University / Fraunhofer FIT", orcid: "0000-0003-1867-4428" }
       ],
       authors: [
-        { name: "Daham M. Mustafa", company: "RWTH Aachen University / Fraunhofer FIT" },
+        { name: "Daham M. Mustafa", company: "RWTH Aachen University / Fraunhofer FIT", orcid: "0000-0003-1867-4428" },
         { name: "Christoph Lange", company: "Fraunhofer FIT" },
         { name: "Giancarlo Guizzardi", company: "University of Twente" },
-        { name: "Diego Collarana", company: "Fraunhofer FIT" },
+        { name: "Diego Collarana", company: "Universidad Privada Boliviana" },
         { name: "Christoph Quix", company: "RWTH Aachen University / Fraunhofer FIT" },
         { name: "Stefan Decker", company: "RWTH Aachen University / Fraunhofer FIT" }
       ],
@@ -47,7 +47,7 @@
       }],
       github: "https://github.com/Daham-Mustaf/odrl-ufol-grounding",
       license: "cc-by",
-      lint: { "check-license": false },
+      lint: { "check-license": "cc-by" },
       publishDate: "2026-06-17",
       alternateFormats: [
         { uri: "ontology/odrl-legal-profile.ttl", label: "Ontology (Turtle)" },
@@ -511,12 +511,11 @@ ex:BE-subjection a odrl-l:Subjection ;
     a Turtle policy grounded in data-space entities, and checked across three
     independent provers plus an Isabelle/HOL mechanisation.
   </p>
-  <table class="simple">
+<table class="simple">
     <thead><tr><th>System</th><th>Version</th><th>Result</th></tr></thead>
     <tbody>
       <tr><td>Vampire</td><td>5.0.0</td><td>39 / 39</td></tr>
-      <!-- sync this Z3 version with the README and the paper's Evaluation section -->
-      <tr><td>Z3</td><td>4.15.4</td><td>39 / 39</td></tr>
+      <tr><td>Z3</td><td>4.15.4</td><td>36 / 39 (times out on the 3 satisfiable problems)</td></tr>
       <tr><td>E</td><td>3.2.5</td><td>36 / 36 (skips the 3 satisfiability problems)</td></tr>
       <tr><td>Isabelle/HOL</td><td>2025</td><td>11 axioms + 23 lemmas, all discharged</td></tr>
     </tbody>
