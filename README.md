@@ -6,9 +6,10 @@
 [![cvc5 1.3.4](https://img.shields.io/badge/cvc5-1.3.4-1f6feb)](https://github.com/cvc5/cvc5)
 
 
-Mechanized verification benchmark and OWL profile for the paper:
-**"What Does ODRL Mean? A Cross-Level Ontological Grounding of
-Permissions, Prohibitions, and Duties in UFO-L"**
+Mechanized verification benchmark and OWL profile for the paper
+**["What Does ODRL Mean? A Cross-Level Ontological Grounding of
+Permissions, Prohibitions, and Duties in UFO-L"](https://arxiv.org/abs/2606.24344)**
+(FOIS 2026; [extended version with full proofs](paper/odrl-ufol-extended.pdf)).
 
 39 problems (TPTP/FOF + SMT-LIB 2 + Turtle) verifying the UFO-L
 grounding of ODRL across three independent provers, plus the
